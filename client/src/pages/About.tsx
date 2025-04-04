@@ -236,10 +236,16 @@ const About = () => {
                               index === 4 ? "400" : "500"}>
                 <div className="card overflow-hidden">
                   <div className="bg-neutral-100 aspect-[4/3] flex items-center justify-center">
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg" 
-                         dangerouslySetInnerHTML={{ __html: member.avatar.startsWith('data:image/svg+xml') ? 
+                    {member.avatar.startsWith('/') ? (
+                      <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
+                      </div>
+                    ) : (
+                      <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg" 
+                          dangerouslySetInnerHTML={{ __html: member.avatar.startsWith('data:image/svg+xml') ? 
                                                     member.avatar.replace('data:image/svg+xml;utf8,', '') : '' }}>
-                    </div>
+                      </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="heading-sm mb-1">{member.name}</h3>

@@ -2,6 +2,12 @@ import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
+// Import SVG images
+import ecommerceSvg from '../../assets/case-studies/ecommerce.svg';
+import aiSvg from '../../assets/case-studies/ai.svg';
+import securitySvg from '../../assets/case-studies/security.svg';
+import cloudSvg from '../../assets/case-studies/cloud.svg';
+
 const caseStudies = [
   {
     id: 1,
@@ -51,29 +57,33 @@ const CaseStudies = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
             <div key={study.id} className="card card-hover h-full flex flex-col">
-              {/* Image placeholder with gradient background */}
+              {/* Image with gradient background */}
               <div className={`w-full h-48 ${study.bgColor} flex items-center justify-center p-6`}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16 text-white opacity-60">
-                  {study.category === 'E-Commerce' && (
-                    <>
-                      <circle cx="8" cy="21" r="1" />
-                      <circle cx="19" cy="21" r="1" />
-                      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                    </>
-                  )}
-                  {study.category === 'AI Solutions' && (
-                    <>
-                      <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
-                      <path d="M10 17v.01" />
-                      <path d="M14 17v.01" />
-                    </>
-                  )}
-                  {study.category === 'Cybersecurity' && (
-                    <>
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </>
-                  )}
-                </svg>
+                {study.category === 'E-Commerce' ? (
+                  <img 
+                    src={ecommerceSvg} 
+                    alt={`${study.title} illustration`}
+                    className="w-32 h-32 object-contain"
+                  />
+                ) : study.category === 'AI Solutions' ? (
+                  <img 
+                    src={aiSvg} 
+                    alt={`${study.title} illustration`}
+                    className="w-32 h-32 object-contain"
+                  />
+                ) : study.category === 'Cybersecurity' ? (
+                  <img 
+                    src={securitySvg} 
+                    alt={`${study.title} illustration`}
+                    className="w-32 h-32 object-contain"
+                  />
+                ) : (
+                  <img 
+                    src={cloudSvg} 
+                    alt={`${study.title} illustration`}
+                    className="w-32 h-32 object-contain"
+                  />
+                )}
               </div>
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center mb-4">

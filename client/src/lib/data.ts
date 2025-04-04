@@ -246,8 +246,8 @@ export const teamMembers: TeamMember[] = [
     name: "Feras E S Alawadi",
     role: "Founder & CEO",
     bio: "Feras E S Alawadi is the founder and CEO of Yafa Cloud Services LLC. With extensive experience in cloud architecture and digital transformation, Feras leads the company's vision to provide innovative cloud and AI solutions for businesses of all sizes. His expertise spans across AWS, Microsoft Azure, and Google Cloud platforms, helping clients leverage the power of cloud technology to drive growth and efficiency.",
-    avatar: generateAvatarUrl("Feras E S Alawadi"),
-    linkedIn: "https://linkedin.com/in/ferasalawadi",
+    avatar: "/src/assets/team/feras-alawadi.jpeg",
+    linkedIn: "https://www.linkedin.com/in/feras-alawadi/",
   }
 ];
 

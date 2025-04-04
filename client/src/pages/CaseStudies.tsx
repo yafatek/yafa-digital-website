@@ -15,8 +15,8 @@ const CaseStudiesPage = () => {
       {/* Hero Section */}
       <section className="bg-[#003366] text-white py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Case Studies</h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+          <h1 className="text-4xl md:text-5xl font-extrabold font-heading mb-6 tracking-tight">Case Studies</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto font-medium opacity-95">
             Explore how we've helped businesses achieve their goals through innovative cloud and AI solutions
           </p>
         </div>
@@ -84,25 +84,25 @@ const CaseStudiesPage = () => {
                 </div>
                 
                 <div className="lg:col-span-2">
-                  <h2 className="text-3xl font-bold font-heading text-[#003366] mb-6">{study.title}</h2>
+                  <h2 className="text-3xl font-extrabold font-heading text-[#003366] mb-6 tracking-tight">{study.title}</h2>
                   
                   <div className="mb-8">
-                    <h3 className="text-xl font-bold font-heading text-[#003366] mb-3">The Challenge</h3>
-                    <p className="text-gray-700">{study.challenge}</p>
+                    <h3 className="text-xl font-extrabold font-heading text-[#003366] mb-3 tracking-tight">The Challenge</h3>
+                    <p className="text-gray-800 text-base leading-relaxed font-medium">{study.challenge}</p>
                   </div>
                   
                   <div className="mb-8">
-                    <h3 className="text-xl font-bold font-heading text-[#003366] mb-3">Our Solution</h3>
-                    <p className="text-gray-700">{study.solution}</p>
+                    <h3 className="text-xl font-extrabold font-heading text-[#003366] mb-3 tracking-tight">Our Solution</h3>
+                    <p className="text-gray-800 text-base leading-relaxed font-medium">{study.solution}</p>
                   </div>
                   
                   <div className="mb-8">
-                    <h3 className="text-xl font-bold font-heading text-[#003366] mb-3">The Results</h3>
-                    <ul className="space-y-2">
+                    <h3 className="text-xl font-extrabold font-heading text-[#003366] mb-3 tracking-tight">The Results</h3>
+                    <ul className="space-y-3">
                       {study.results.map((result, i) => (
                         <li key={i} className="flex items-start">
                           <ArrowRight className="h-5 w-5 text-[#2E8B57] mt-1 mr-2 shrink-0" />
-                          <span className="text-gray-700">{result}</span>
+                          <span className="text-gray-800 text-base leading-relaxed font-medium">{result}</span>
                         </li>
                       ))}
                     </ul>
@@ -123,8 +123,8 @@ const CaseStudiesPage = () => {
       {/* CTA Section */}
       <section className="py-20 bg-[#003366] text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">Ready to Achieve Similar Results?</h2>
-          <p className="text-lg max-w-3xl mx-auto mb-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading mb-6 tracking-tight">Ready to Achieve Similar Results?</h2>
+          <p className="text-lg max-w-3xl mx-auto mb-8 font-medium leading-relaxed opacity-95">
             Let's discuss how our cloud and AI solutions can help your business overcome challenges and reach new heights.
           </p>
           <Link href="/contact">
