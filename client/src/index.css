@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    --corporate-blue: 211 100% 50%;
-    --corporate-dark: 211 100% 45%;
-    --corporate-light: 211 100% 95%;
-    --corporate-accent: 211 100% 60%;
-    --neutral-900: 220 25% 10%;
-    --neutral-800: 220 20% 20%;
-    --neutral-700: 220 15% 30%;
-    --neutral-600: 220 12% 40%;
-    --neutral-500: 220 10% 50%;
-    --neutral-400: 220 10% 60%;
-    --neutral-300: 220 10% 75%;
-    --neutral-200: 220 15% 90%;
-    --neutral-100: 220 20% 96%;
-    --neutral-50: 220 30% 99%;
+    --corporate-blue: 210 60% 50%;
+    --corporate-dark: 210 50% 40%;
+    --corporate-light: 210 50% 95%;
+    --corporate-accent: 210 40% 60%;
+    --neutral-900: 220 15% 15%;
+    --neutral-800: 220 12% 20%;
+    --neutral-700: 220 10% 30%;
+    --neutral-600: 220 8% 40%;
+    --neutral-500: 220 6% 50%;
+    --neutral-400: 220 6% 60%;
+    --neutral-300: 220 6% 75%;
+    --neutral-200: 220 10% 90%;
+    --neutral-100: 220 15% 96%;
+    --neutral-50: 220 20% 99%;
   }
 
   * {
@@ -100,7 +100,7 @@
     
     &:before {
       content: "";
-      @apply block w-16 h-1 bg-primary/70 rounded-full mb-5;
+      @apply block w-16 h-1 bg-primary/30 rounded-full mb-5;
     }
   }
   
@@ -162,8 +162,8 @@
   
   /* Feature Icons & Highlights */
   .feature-icon {
-    @apply w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0;
-    box-shadow: 0 4px 12px -4px rgba(var(--corporate-blue), 0.2);
+    @apply w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary/70 shrink-0;
+    box-shadow: 0 4px 12px -6px rgba(var(--corporate-blue), 0.1);
     backdrop-filter: blur(8px);
   }
   
@@ -172,7 +172,7 @@
   }
   
   .highlight-icon {
-    @apply h-5 w-5 text-primary mt-0.5 flex-shrink-0;
+    @apply h-5 w-5 text-primary/60 mt-0.5 flex-shrink-0;
   }
   
   /* Stats & Metrics */
@@ -208,13 +208,13 @@
   /* Testimonials */
   .testimonial-card {
     @apply bg-white p-8 rounded-2xl;
-    box-shadow: 0 2px 20px -8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 20px -10px rgba(0,0,0,0.07);
     position: relative;
     overflow: hidden;
     
     &:before {
       content: "";
-      @apply absolute left-0 top-0 h-full w-1.5 bg-primary opacity-80;
+      @apply absolute left-0 top-0 h-full w-1 bg-primary/40 rounded-r;
     }
   }
   
