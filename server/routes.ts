@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { blogPosts, services, caseStudies, testimonials } from "../client/src/lib/data";
 import { contactFormSchema } from "../client/src/lib/validation";
 import { z } from "zod";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint for sending contact form
@@ -167,6 +168,88 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: false,
         message: "An error occurred while fetching testimonials" 
       });
+    }
+  });
+
+  // API endpoint for Gemini AI chat
+  app.post("/api/chat", async (req, res) => {
+    try {
+      // Validate the request body
+      const { message } = z.object({
+        message: z.string().min(1)
+      }).parse(req.body);
+
+      // Check if API key is available
+      const API_KEY = process.env.GEMINI_API_KEY;
+      if (!API_KEY) {
+        console.error("GEMINI_API_KEY is not available in server environment");
+        return res.status(500).json({
+          success: false,
+          message: "AI service is temporarily unavailable"
+        });
+      }
+
+      // Initialize Gemini API
+      const genAI = new GoogleGenerativeAI(API_KEY);
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+      // System instructions to set the AI's behavior
+      const SYSTEM_INSTRUCTIONS = `
+      You are an AI assistant named Yafa AI for Yafa Cloud Services LLC, a company specializing in cloud solutions and AI services.
+      
+      Your responsibilities:
+      - Provide friendly and helpful responses about cloud services, AI solutions, and digital transformation.
+      - Answer questions about Yafa Cloud Services' offerings including: cloud infrastructure, e-commerce solutions, business intelligence, and enterprise security.
+      - Maintain a professional but conversational tone.
+      - Keep responses concise (1-2 paragraphs maximum).
+      - If you don't know specific details about Yafa Cloud Services not mentioned in this prompt, suggest contacting the company directly.
+      - NEVER make up information about specific pricing or technical specifications not included in your training.
+      
+      About Yafa Cloud Services LLC:
+      - Cloud service provider founded in 2018
+      - Specializes in AWS, Microsoft Azure, and Google Cloud solutions
+      - Offers AI integration, e-commerce setup, and cybersecurity services
+      - Serves customers from startups to enterprise-level organizations
+      - Has a global client base with offices in major tech hubs
+      `;
+
+      // Create a chat session
+      const chat = model.startChat({
+        history: [],
+        generationConfig: {
+          maxOutputTokens: 500,
+          temperature: 0.7,
+        },
+        systemInstruction: SYSTEM_INSTRUCTIONS,
+      });
+
+      // Send message to Gemini
+      console.log("Sending message to Gemini API:", message);
+      const result = await chat.sendMessage(message);
+      const responseText = result.response.text();
+
+      // Return the AI response
+      res.status(200).json({
+        success: true,
+        message: "AI response generated",
+        data: { response: responseText }
+      });
+    } catch (error) {
+      console.error("Chat API error:", error);
+      
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false,
+          message: "Invalid request format", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false,
+          message: "An error occurred while processing your request",
+          error: error instanceof Error ? error.message : String(error)
+        });
+      }
     }
   });
 

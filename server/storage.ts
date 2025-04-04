@@ -1,8 +1,20 @@
 import { type ContactFormValues } from "../client/src/lib/types";
+import { db } from "./db";
+import { 
+  users, 
+  contactSubmissions, 
+  newsletterSubscriptions, 
+  type User,
+  type InsertUser,
+  type ContactSubmission,
+  type NewsletterSubscription,
+  insertUserSchema,
+  insertContactSubmissionSchema,
+  insertNewsletterSubscriptionSchema
+} from "../shared/schema";
+import { eq } from "drizzle-orm";
 
-// modify the interface with any CRUD methods
-// you might need
-
+// Keep the same interface
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
@@ -13,99 +25,68 @@ export interface IStorage {
   getNewsletterSubscriptions(): Promise<NewsletterSubscription[]>;
 }
 
-// User types from the existing schema
-export interface User {
-  id: number;
-  username: string;
-  password: string;
-}
-
-export interface InsertUser {
-  username: string;
-  password: string;
-}
-
-// Contact submission type
-export interface ContactSubmission {
-  id: number;
-  name: string;
-  email: string;
-  subject: string;
-  service: string;
-  message: string;
-  createdAt: Date;
-}
-
-// Newsletter subscription type
-export interface NewsletterSubscription {
-  id: number;
-  email: string;
-  createdAt: Date;
-}
-
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private contactSubmissions: Map<number, ContactSubmission>;
-  private newsletterSubscriptions: Map<number, NewsletterSubscription>;
-  private userId: number;
-  private contactId: number;
-  private subscriptionId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.contactSubmissions = new Map();
-    this.newsletterSubscriptions = new Map();
-    this.userId = 1;
-    this.contactId = 1;
-    this.subscriptionId = 1;
-  }
-
+// Database storage implementation
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.userId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const validatedData = insertUserSchema.parse(insertUser);
+    const [user] = await db.insert(users).values(validatedData).returning();
     return user;
   }
 
   async createContactSubmission(contact: ContactFormValues): Promise<ContactSubmission> {
-    const id = this.contactId++;
-    const contactSubmission: ContactSubmission = {
-      id,
-      ...contact,
-      createdAt: new Date()
+    const contactData = {
+      name: contact.name,
+      email: contact.email,
+      subject: contact.subject,
+      service: contact.service,
+      message: contact.message
     };
-    this.contactSubmissions.set(id, contactSubmission);
-    return contactSubmission;
+    
+    const validatedData = insertContactSubmissionSchema.parse(contactData);
+    const [submission] = await db.insert(contactSubmissions)
+      .values(validatedData)
+      .returning();
+    
+    return submission;
   }
 
   async getContactSubmissions(): Promise<ContactSubmission[]> {
-    return Array.from(this.contactSubmissions.values());
+    return await db.select().from(contactSubmissions).orderBy(contactSubmissions.createdAt);
   }
 
   async createNewsletterSubscription(email: string): Promise<NewsletterSubscription> {
-    const id = this.subscriptionId++;
-    const subscription: NewsletterSubscription = {
-      id,
-      email,
-      createdAt: new Date()
-    };
-    this.newsletterSubscriptions.set(id, subscription);
+    const validatedData = insertNewsletterSubscriptionSchema.parse({ email });
+    
+    // Check if email already exists
+    const [existingSubscription] = await db.select()
+      .from(newsletterSubscriptions)
+      .where(eq(newsletterSubscriptions.email, email));
+    
+    if (existingSubscription) {
+      return existingSubscription;
+    }
+    
+    const [subscription] = await db.insert(newsletterSubscriptions)
+      .values(validatedData)
+      .returning();
+    
     return subscription;
   }
 
   async getNewsletterSubscriptions(): Promise<NewsletterSubscription[]> {
-    return Array.from(this.newsletterSubscriptions.values());
+    return await db.select().from(newsletterSubscriptions).orderBy(newsletterSubscriptions.createdAt);
   }
 }
 
-export const storage = new MemStorage();
+// Export the database storage instance 
+export const storage = new DatabaseStorage();
