@@ -1,16 +1,16 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 const caseStudies = [
   {
     id: 1,
-    title: 'E-commerce Platform Migration & AI Integration',
+    title: 'Enterprise E-commerce Platform Migration',
     category: 'E-Commerce',
     client: 'RetailPlus',
     description: 'We helped RetailPlus migrate their e-commerce platform to AWS cloud and implemented AI-driven inventory management, resulting in a 35% increase in sales.',
     href: '/case-studies/retailplus',
-    bgColor: 'from-blue-600 to-blue-900'
+    bgColor: 'bg-primary'
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const caseStudies = [
     client: 'ServiceNow Inc.',
     description: 'Developed and deployed a multilingual AI chatbot for ServiceNow Inc., reducing customer service costs by 40% and improving response times by 75%.',
     href: '/case-studies/servicenow',
-    bgColor: 'from-green-600 to-green-900'
+    bgColor: 'bg-corporate-accent'
   },
   {
     id: 3,
@@ -28,26 +28,31 @@ const caseStudies = [
     client: 'FinSecure Bank',
     description: 'Implemented comprehensive cybersecurity solutions for FinSecure Bank, preventing potential data breaches and ensuring compliance with financial regulations.',
     href: '/case-studies/finsecure',
-    bgColor: 'from-blue-600 to-blue-900'
+    bgColor: 'bg-corporate-dark'
   }
 ];
 
 const CaseStudies = () => {
   return (
-    <section id="case-studies" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#003366] mb-4">Case Studies</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            See how we've helped businesses across various industries achieve their goals through innovative cloud and AI solutions.
+    <section id="case-studies" className="section bg-neutral-50">
+      <div className="container">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium uppercase tracking-wider mb-4">
+            Success Stories
+          </div>
+          <h2 className="heading-lg mb-4">
+            Enterprise Case Studies
+          </h2>
+          <p className="text-body-lg text-neutral-600 mx-auto">
+            See how we've helped enterprise businesses across various industries achieve their strategic goals through innovative cloud and AI solutions.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
-            <div key={study.id} className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+            <div key={study.id} className="card card-hover h-full flex flex-col">
               {/* Image placeholder with gradient background */}
-              <div className={`w-full h-48 bg-gradient-to-r ${study.bgColor} flex items-center justify-center p-6`}>
+              <div className={`w-full h-48 ${study.bgColor} flex items-center justify-center p-6`}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16 text-white opacity-60">
                   {study.category === 'E-Commerce' && (
                     <>
@@ -70,22 +75,25 @@ const CaseStudies = () => {
                   )}
                 </svg>
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center mb-4">
-                  <span className={`${study.category === 'AI Solutions' || study.category === 'Cybersecurity' ? 'bg-[#2E8B57] bg-opacity-10 text-[#2E8B57]' : 'bg-[#003366] bg-opacity-10 text-[#003366]'} text-xs font-medium px-3 py-1 rounded-full`}>
+                  <span className="bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full">
                     {study.category}
                   </span>
-                  <span className="ml-3 text-gray-500 text-sm">Client: {study.client}</span>
+                  <span className="ml-3 text-neutral-500 text-sm">Client: {study.client}</span>
                 </div>
-                <h3 className="text-xl font-bold font-heading mb-3 text-[#003366]">{study.title}</h3>
-                <p className="text-gray-700 mb-4">
+                <h3 className="heading-sm mb-3">{study.title}</h3>
+                <p className="text-neutral-700 mb-5 text-sm">
                   {study.description}
                 </p>
-                <Link href={study.href}>
-                  <a className="inline-block text-[#2E8B57] font-medium hover:underline">
-                    Read case study <ArrowRight className="inline h-4 w-4 ml-1" />
-                  </a>
-                </Link>
+                <div className="mt-auto">
+                  <Link href={study.href}>
+                    <span className="inline-flex items-center text-primary font-medium cursor-pointer hover:underline group">
+                      Read case study 
+                      <ArrowRight className="inline h-4 w-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -93,8 +101,9 @@ const CaseStudies = () => {
         
         <div className="text-center mt-12">
           <Link href="/case-studies">
-            <Button className="bg-[#003366] text-white font-heading font-semibold px-8 py-3 hover:bg-opacity-90 transition-colors duration-300">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium">
               View All Case Studies
+              <ExternalLink className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
