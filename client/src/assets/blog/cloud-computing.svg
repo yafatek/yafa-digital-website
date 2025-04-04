@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Cloud Computing</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(50, 100)" fill="#FFFFFF" fill-opacity="0.85">
+            <path d="M600,300 C600,350 560,400 500,400 L200,400 C120,400 50,330 50,250 C50,170 120,100 200,100 C220,100 240,105 260,115 C300,50 380,10 470,10 C590,10 690,110 690,230 C690,240 689,250 688,260 C650,270 620,290 600,300 Z" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M200,450 L200,550" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M350,450 L350,550" stroke="#FFFFFF" stroke-width="10"></path>
+            <path d="M500,450 L500,550" stroke="#FFFFFF" stroke-width="10"></path>
+        </g>
+    </g>
+</svg>

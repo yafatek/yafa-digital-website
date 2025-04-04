@@ -4,6 +4,12 @@ import { ArrowRight, Calendar, Clock, ExternalLink, BookOpen } from 'lucide-reac
 import { useState } from 'react';
 import { AnimatedElement } from '@/components/ui/animated-element';
 
+// Import blog post images
+import aiCloudImg from '../../assets/blog/ai-cloud.svg';
+import aiDataImg from '../../assets/blog/ai-data.svg';
+import cybersecurityImg from '../../assets/blog/cybersecurity.svg';
+import cloudComputingImg from '../../assets/blog/cloud-computing.svg';
+
 const blogCategories = ['All', 'Cloud Computing', 'AI & Machine Learning', 'Cybersecurity', 'E-Commerce'];
 
 const blogPosts = [
@@ -15,7 +21,8 @@ const blogPosts = [
     readTime: '6 min read',
     description: 'Explore how artificial intelligence is revolutionizing enterprise cloud infrastructure and creating new possibilities for large-scale business operations.',
     href: '/blog/ai-cloud-computing',
-    bgColor: 'bg-primary'
+    bgColor: 'bg-primary',
+    image: aiCloudImg
   },
   {
     id: 2,
@@ -25,7 +32,8 @@ const blogPosts = [
     readTime: '8 min read',
     description: 'Protect your enterprise from sophisticated cyber threats with these essential security protocols every organization should implement immediately.',
     href: '/blog/cybersecurity-best-practices',
-    bgColor: 'bg-corporate-accent'
+    bgColor: 'bg-corporate-accent',
+    image: cybersecurityImg
   },
   {
     id: 3,
@@ -35,7 +43,8 @@ const blogPosts = [
     readTime: '5 min read',
     description: 'Discover how AI-powered analytics, machine learning models, and intelligent automation are revolutionizing enterprise data management.',
     href: '/blog/ai-data-transformation',
-    bgColor: 'bg-corporate-dark'
+    bgColor: 'bg-corporate-dark',
+    image: aiDataImg
   }
 ];
 
@@ -88,33 +97,12 @@ const Blog = () => {
             >
               <article className="card card-hover h-full flex flex-col">
                 {/* Post header image */}
-                <div className={`w-full h-48 ${post.bgColor} flex items-center justify-center p-6`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16 text-white opacity-60">
-                    {post.category === 'AI & Machine Learning' && (
-                      <>
-                        <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
-                        <path d="M10 17v.01" />
-                        <path d="M14 17v.01" />
-                      </>
-                    )}
-                    {post.category === 'Cybersecurity' && (
-                      <>
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      </>
-                    )}
-                    {post.category === 'E-Commerce' && (
-                      <>
-                        <circle cx="8" cy="21" r="1" />
-                        <circle cx="19" cy="21" r="1" />
-                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                      </>
-                    )}
-                    {post.category === 'Cloud Computing' && (
-                      <>
-                        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-                      </>
-                    )}
-                  </svg>
+                <div className={`w-full h-48 ${post.bgColor} flex items-center justify-center overflow-hidden`}>
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
                 {/* Post content */}

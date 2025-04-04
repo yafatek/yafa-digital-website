@@ -5,6 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { BlogPost } from '@/lib/types';
 
+// Import blog post images
+import aiCloudImg from '../assets/blog/ai-cloud.svg';
+import aiDataImg from '../assets/blog/ai-data.svg';
+import cybersecurityImg from '../assets/blog/cybersecurity.svg';
+import cloudComputingImg from '../assets/blog/cloud-computing.svg';
+
 const categories = ['All', 'Cloud Computing', 'AI & Machine Learning', 'Cybersecurity', 'E-Commerce'];
 
 const Blog = () => {
@@ -36,36 +42,20 @@ const Blog = () => {
     }
   };
 
-  // Function to get the appropriate icon for each category
-  const getCategoryIcon = (category: string) => {
-    return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16 text-white opacity-60">
-        {category === 'AI & Machine Learning' && (
-          <>
-            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
-            <path d="M10 17v.01" />
-            <path d="M14 17v.01" />
-          </>
-        )}
-        {category === 'Cybersecurity' && (
-          <>
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </>
-        )}
-        {category === 'E-Commerce' && (
-          <>
-            <circle cx="8" cy="21" r="1" />
-            <circle cx="19" cy="21" r="1" />
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-          </>
-        )}
-        {category === 'Cloud Computing' && (
-          <>
-            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-          </>
-        )}
-      </svg>
-    );
+  // Function to get the appropriate image for each category
+  const getCategoryImage = (category: string) => {
+    switch(category) {
+      case 'AI & Machine Learning':
+        return aiCloudImg; // Using the imported AI image
+      case 'Cybersecurity':
+        return cybersecurityImg; // Using the imported security image
+      case 'Cloud Computing':
+        return cloudComputingImg; // Using the imported cloud computing image
+      case 'E-Commerce':
+        return aiDataImg; // Reusing one of our images for e-commerce
+      default:
+        return aiCloudImg; // Default fallback
+    }
   };
 
   return (
@@ -125,9 +115,13 @@ const Blog = () => {
             ) : (
               filteredPosts.map((post) => (
                 <div key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  {/* Image placeholder with gradient background */}
-                  <div className={`w-full h-48 bg-gradient-to-r ${getCategoryGradient(post.category)} flex items-center justify-center p-6`}>
-                    {getCategoryIcon(post.category)}
+                  {/* Image display with appropriate SVG for category */}
+                  <div className={`w-full h-48 bg-gradient-to-r ${getCategoryGradient(post.category)} flex items-center justify-center overflow-hidden`}>
+                    <img 
+                      src={getCategoryImage(post.category)} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-4">

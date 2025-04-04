@@ -18,6 +18,7 @@ export interface BlogPost {
   date: string;
   author: string;
   tags: string[];
+  image?: string; // Optional image URL or path
 }
 
 // Newsletter subscription types
