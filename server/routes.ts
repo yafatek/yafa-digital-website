@@ -213,17 +213,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       - Has a global client base with offices in major tech hubs
       `;
 
-      // Create a chat session
+      // Create a chat session with proper configuration for Gemini
       const chat = model.startChat({
         history: [],
         generationConfig: {
           maxOutputTokens: 500,
           temperature: 0.7,
         },
-        systemInstruction: SYSTEM_INSTRUCTIONS,
+        // Google's Gemini API doesn't support systemInstruction in the same way as OpenAI
+        // We'll use a user message as the initial message instead
       });
 
-      // Send message to Gemini
+      // First, send a system message to set the context
+      await chat.sendMessage("You are Yafa AI, an assistant for Yafa Cloud Services. You provide helpful information about cloud services, AI solutions, and digital transformation. Keep responses professional and concise.");
+      
+      // Then send the user's actual message
       console.log("Sending message to Gemini API:", message);
       const result = await chat.sendMessage(message);
       const responseText = result.response.text();
