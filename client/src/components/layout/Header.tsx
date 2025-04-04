@@ -173,15 +173,26 @@ const Header = () => {
               ))}
             </div>
             
-            {/* CTA button */}
-            <Link href="/contact">
-              <Button 
-                className="bg-primary text-white font-medium hover:bg-primary/90 transition-all ml-4"
-                size="sm"
-              >
-                Contact Us
-              </Button>
-            </Link>
+            {/* CTA buttons */}
+            <div className="flex items-center space-x-3">
+              <Link href="/case-studies">
+                <Button 
+                  variant="outline" 
+                  className="border-primary/30 text-primary hover:bg-primary/5 hidden lg:inline-flex"
+                  size="sm"
+                >
+                  Case Studies
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button 
+                  className="bg-primary text-white font-medium hover:bg-primary/90 transition-all"
+                  size="sm"
+                >
+                  Free Consultation
+                </Button>
+              </Link>
+            </div>
           </nav>
         </div>
         
@@ -257,11 +268,18 @@ const Header = () => {
                   </a>
                 </div>
                 <div className="mt-5">
-                  <Link href="/contact">
-                    <Button className="w-full bg-primary text-white">
-                      Contact Us
-                    </Button>
-                  </Link>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link href="/case-studies">
+                      <Button variant="outline" className="w-full text-primary">
+                        Case Studies
+                      </Button>
+                    </Link>
+                    <Link href="/contact">
+                      <Button className="w-full bg-primary text-white">
+                        Free Consultation
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </nav>
