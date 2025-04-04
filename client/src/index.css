@@ -214,4 +214,49 @@
   .desktop-only {
     @apply hidden md:block;
   }
+  
+  /* Animation utilities */
+  .reveal-animation {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .reveal-animation.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .reveal-delay-100 {
+    transition-delay: 100ms;
+  }
+  
+  .reveal-delay-200 {
+    transition-delay: 200ms;
+  }
+  
+  .reveal-delay-300 {
+    transition-delay: 300ms;
+  }
+  
+  .reveal-delay-400 {
+    transition-delay: 400ms;
+  }
+  
+  .reveal-delay-500 {
+    transition-delay: 500ms;
+  }
+  
+  .reveal-scale {
+    @apply opacity-0 scale-95 transition-all duration-700 ease-out;
+  }
+  
+  .reveal-scale.revealed {
+    @apply opacity-100 scale-100;
+  }
+  
+  .reveal-fade {
+    @apply opacity-0 transition-opacity duration-700 ease-out;
+  }
+  
+  .reveal-fade.revealed {
+    @apply opacity-100;
+  }
 }
