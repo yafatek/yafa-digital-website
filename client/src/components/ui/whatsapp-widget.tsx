@@ -7,7 +7,7 @@ interface WhatsAppWidgetProps {
 
 const WhatsAppWidget = ({
   phoneNumber,
-  message = "Hello! I'd like to know more about your services."
+  message = "Hello! I visited yafa.dev and I'd like to know more about your services."
 }: WhatsAppWidgetProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);

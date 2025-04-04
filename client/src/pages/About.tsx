@@ -2,9 +2,11 @@ import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { 
   Check, Users, Globe, Headphones, Award, 
-  Target, Clock, Zap, Shield, Lightbulb 
+  Target, Clock, Zap, Shield, Lightbulb,
+  Linkedin, Twitter, Github
 } from 'lucide-react';
 import { AnimatedElement } from "@/components/ui/animated-element";
+import { teamMembers } from '@/lib/data';
 
 const About = () => {
   return (
@@ -226,29 +228,44 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: 'David Wilson', title: 'CEO & Founder' },
-              { name: 'Sarah Ahmad', title: 'Chief Technology Officer' },
-              { name: 'Michael Lee', title: 'Chief Cloud Architect' },
-              { name: 'Rebecca Johnson', title: 'Head of AI Development' },
-              { name: 'Carlos Rodriguez', title: 'Cybersecurity Director' },
-              { name: 'Jennifer Wang', title: 'Client Success Manager' }
-            ].map((member, index) => (
-              <AnimatedElement key={index} delay={index === 0 ? "none" : 
+            {teamMembers.map((member, index) => (
+              <AnimatedElement key={member.id} delay={index === 0 ? "none" : 
                               index === 1 ? "100" : 
                               index === 2 ? "200" : 
                               index === 3 ? "300" : 
                               index === 4 ? "400" : "500"}>
                 <div className="card overflow-hidden">
                   <div className="bg-neutral-100 aspect-[4/3] flex items-center justify-center">
-                    <svg className="w-20 h-20 text-primary/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg" 
+                         dangerouslySetInnerHTML={{ __html: member.avatar.startsWith('data:image/svg+xml') ? 
+                                                    member.avatar.replace('data:image/svg+xml;utf8,', '') : '' }}>
+                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="heading-sm mb-1">{member.name}</h3>
-                    <p className="text-neutral-600 text-sm">{member.title}</p>
+                    <p className="text-neutral-600 text-sm mb-3">{member.role}</p>
+                    <p className="text-neutral-700 text-sm mb-4">{member.bio}</p>
+                    
+                    <div className="flex gap-3">
+                      {member.linkedIn && (
+                        <a href={member.linkedIn} target="_blank" rel="noopener noreferrer" 
+                           className="text-neutral-500 hover:text-primary transition-colors">
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                      )}
+                      {member.twitter && (
+                        <a href={member.twitter} target="_blank" rel="noopener noreferrer" 
+                           className="text-neutral-500 hover:text-primary transition-colors">
+                          <Twitter className="w-5 h-5" />
+                        </a>
+                      )}
+                      {member.github && (
+                        <a href={member.github} target="_blank" rel="noopener noreferrer" 
+                           className="text-neutral-500 hover:text-primary transition-colors">
+                          <Github className="w-5 h-5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </AnimatedElement>

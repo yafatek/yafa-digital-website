@@ -1,4 +1,4 @@
-import { BlogPost, CaseStudy, Service, Testimonial } from './types';
+import { BlogPost, CaseStudy, Service, TeamMember, Testimonial } from './types';
 
 // Blog posts data
 export const blogPosts: BlogPost[] = [
@@ -236,6 +236,18 @@ export const testimonials: Testimonial[] = [
     name: "Rebecca Martinez",
     position: "CISO, FinSecure Bank",
     avatar: generateAvatarUrl("Rebecca Martinez")
+  }
+];
+
+// Team members data
+export const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    name: "Feras E S Alawadi",
+    role: "Founder & CEO",
+    bio: "Feras E S Alawadi is the founder and CEO of Yafa Cloud Services LLC. With extensive experience in cloud architecture and digital transformation, Feras leads the company's vision to provide innovative cloud and AI solutions for businesses of all sizes. His expertise spans across AWS, Microsoft Azure, and Google Cloud platforms, helping clients leverage the power of cloud technology to drive growth and efficiency.",
+    avatar: generateAvatarUrl("Feras E S Alawadi"),
+    linkedIn: "https://linkedin.com/in/ferasalawadi",
   }
 ];
 

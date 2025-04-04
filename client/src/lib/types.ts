@@ -62,3 +62,15 @@ export interface Testimonial {
   position: string;
   avatar: string;
 }
+
+// Team member types
+export interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  bio: string;
+  avatar: string;
+  linkedIn?: string;
+  twitter?: string;
+  github?: string;
+}

@@ -40,12 +40,12 @@ const Footer = () => {
           <div className="flex flex-wrap justify-between items-center">
             <div className="flex items-center">
               <Phone className="h-5 w-5 text-primary mr-3" />
-              <span className="text-neutral-700 text-sm font-medium">Contact us today: (123) 456-7890</span>
+              <span className="text-neutral-700 text-sm font-medium">Contact us today: +971 565531542</span>
             </div>
             <div className="flex gap-x-8">
-              <a href="mailto:info@yafacloud.com" className="flex items-center text-neutral-700 hover:text-primary transition-colors">
+              <a href="mailto:info@yafa.dev" className="flex items-center text-neutral-700 hover:text-primary transition-colors">
                 <Mail className="h-4 w-4 mr-1.5" />
-                <span className="text-sm">info@yafacloud.com</span>
+                <span className="text-sm">info@yafa.dev</span>
               </a>
               <a href="#" className="flex items-center text-neutral-700 hover:text-primary transition-colors">
                 <MapPin className="h-4 w-4 mr-1.5" />
@@ -229,11 +229,11 @@ const Footer = () => {
                 </li>
                 <li className="flex">
                   <Phone className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                  <span className="text-neutral-400">(123) 456-7890</span>
+                  <span className="text-neutral-400">+971 565531542</span>
                 </li>
                 <li className="flex">
                   <Mail className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                  <span className="text-neutral-400">info@yafacloud.com</span>
+                  <span className="text-neutral-400">info@yafa.dev</span>
                 </li>
               </ul>
               
