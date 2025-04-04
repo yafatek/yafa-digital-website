@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="securityGradient">
+            <stop stop-color="#991B1B" offset="0%"></stop>
+            <stop stop-color="#EF4444" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="url(#securityGradient)" x="0" y="0" width="800" height="600"></rect>
+        <g transform="translate(150, 100)" fill="#FFFFFF" fill-opacity="0.9">
+            <path d="M500,300 C500,355.23 455.23,400 400,400 L100,400 C44.77,400 0,355.23 0,300 L0,100 C0,44.77 44.77,0 100,0 L400,0 C455.23,0 500,44.77 500,100 L500,300 Z" fill-opacity="0.15"></path>
+            
+            <!-- Shield -->
+            <path d="M250,60 L250,60 C299.6599,60 340,100.3401 340,150 L340,220 C340,248.6142 316.6142,272 288,272 L212,272 C183.3858,272 160,248.6142 160,220 L160,150 C160,100.3401 200.3401,60 250,60 Z" fill-opacity="0.3"></path>
+            <path d="M250,80 L250,80 C289.7066,80 322,112.2934 322,152 L322,212 C322,234.0914 304.0914,252 282,252 L218,252 C195.9086,252 178,234.0914 178,212 L178,152 C178,112.2934 210.2934,80 250,80 Z" fill-opacity="0.8"></path>
+            
+            <!-- Lock -->
+            <rect x="216" y="130" width="68" height="50" rx="10" fill-opacity="0.9"></rect>
+            <path d="M233,130 L233,130 L233,110 C233,97.8497 242.8497,88 255,88 L255,88 C267.1503,88 277,97.8497 277,110 L277,130" stroke="#FFFFFF" stroke-width="10" fill="none"></path>
+            <circle cx="250" cy="155" r="10" fill-opacity="0.5"></circle>
+            <rect x="246" y="155" width="8" height="15" rx="4" fill-opacity="0.5"></rect>
+            
+            <!-- Digital Elements -->
+            <g fill-opacity="0.8">
+                <path d="M120,290 L120,310 L380,310 L380,290 L120,290 Z"></path>
+                <path d="M120,330 L120,350 L380,350 L380,330 L120,330 Z"></path>
+                
+                <circle cx="130" cy="300" r="5"></circle>
+                <circle cx="150" cy="300" r="5"></circle>
+                <circle cx="170" cy="300" r="5"></circle>
+                <circle cx="190" cy="300" r="5"></circle>
+                <circle cx="210" cy="300" r="5"></circle>
+                <circle cx="230" cy="300" r="5"></circle>
+                <circle cx="250" cy="300" r="5"></circle>
+                <circle cx="270" cy="300" r="5"></circle>
+                <circle cx="290" cy="300" r="5"></circle>
+                <circle cx="310" cy="300" r="5"></circle>
+                <circle cx="330" cy="300" r="5"></circle>
+                <circle cx="350" cy="300" r="5"></circle>
+                <circle cx="370" cy="300" r="5"></circle>
+                
+                <circle cx="130" cy="340" r="5"></circle>
+                <circle cx="150" cy="340" r="5"></circle>
+                <circle cx="170" cy="340" r="5"></circle>
+                <circle cx="190" cy="340" r="5"></circle>
+                <circle cx="210" cy="340" r="5"></circle>
+                <circle cx="230" cy="340" r="5"></circle>
+                <circle cx="250" cy="340" r="5"></circle>
+                <circle cx="270" cy="340" r="5"></circle>
+                <circle cx="290" cy="340" r="5"></circle>
+                <circle cx="310" cy="340" r="5"></circle>
+                <circle cx="330" cy="340" r="5"></circle>
+                <circle cx="350" cy="340" r="5"></circle>
+                <circle cx="370" cy="340" r="5"></circle>
+            </g>
+            
+            <!-- Binary -->
+            <g fill-opacity="0.6" transform="translate(100, 220)">
+                <text x="0" y="0" font-family="monospace" font-size="12" fill="#FFFFFF">01001101</text>
+                <text x="0" y="20" font-family="monospace" font-size="12" fill="#FFFFFF">10110100</text>
+                <text x="0" y="40" font-family="monospace" font-size="12" fill="#FFFFFF">00111010</text>
+            </g>
+            <g fill-opacity="0.6" transform="translate(340, 220)">
+                <text x="0" y="0" font-family="monospace" font-size="12" fill="#FFFFFF">11010010</text>
+                <text x="0" y="20" font-family="monospace" font-size="12" fill="#FFFFFF">00101100</text>
+                <text x="0" y="40" font-family="monospace" font-size="12" fill="#FFFFFF">10001111</text>
+            </g>
+        </g>
+    </g>
+</svg>

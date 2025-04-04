@@ -51,6 +51,7 @@ export interface CaseStudy {
     author: string;
   };
   bgColor: string;
+  image?: string;
 }
 
 // Testimonial types

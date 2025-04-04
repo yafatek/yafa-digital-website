@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="cloudGradient">
+            <stop stop-color="#7E22CE" offset="0%"></stop>
+            <stop stop-color="#A855F7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="url(#cloudGradient)" x="0" y="0" width="800" height="600"></rect>
+        <g transform="translate(150, 100)" fill="#FFFFFF" fill-opacity="0.9">
+            <path d="M500,300 C500,355.23 455.23,400 400,400 L100,400 C44.77,400 0,355.23 0,300 L0,100 C0,44.77 44.77,0 100,0 L400,0 C455.23,0 500,44.77 500,100 L500,300 Z" fill-opacity="0.15"></path>
+            
+            <!-- Main Cloud Shape -->
+            <path d="M170,100 C170,78.9543 186.9543,62 208,62 C222.67,62 235.3467,70.2133 241.34,82.3333 C247.8067,73.29 258.47,67.6667 270.3333,67.6667 C289.6,67.6667 305.3333,83.4 305.3333,102.6667 C305.3333,104.46 305.1867,106.22 304.9067,107.94 C316.44,109.51 325.3333,119.5567 325.3333,131.6667 C325.3333,145.0733 314.4067,156 301,156 L180,156 C158.9543,156 142,139.0457 142,118 C142,114.22 142.6667,110.5867 143.9067,107.2267 C153.18,102.4 160,92.9767 160,82 C160,79.6067 159.66,77.3 159.02,75.1133 C163.2467,72.2733 168.56,70.6667 174.3333,70.6667 C179.5533,70.6667 184.42,72.0467 188.5,74.4867 C176.42,80.64 168.58,92.11 168.22,105.6067 L170,105.3333 C170,103.5533 170,101.78 170,100 Z" fill-opacity="0.8"></path>
+            
+            <!-- Servers -->
+            <g transform="translate(140, 180)">
+                <rect x="0" y="0" width="80" height="120" rx="5" fill-opacity="0.8"></rect>
+                <rect x="10" y="10" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="30" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="50" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="70" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="90" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+            </g>
+            <g transform="translate(280, 180)">
+                <rect x="0" y="0" width="80" height="120" rx="5" fill-opacity="0.8"></rect>
+                <rect x="10" y="10" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="30" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="50" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="70" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+                <rect x="10" y="90" width="60" height="10" rx="2" fill-opacity="0.9"></rect>
+            </g>
+            
+            <!-- Connection Lines -->
+            <g stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5,5" fill-opacity="0.8">
+                <path d="M250,130 L250,180" fill="none"></path>
+                <path d="M210,150 L180,180" fill="none"></path>
+                <path d="M290,150 L320,180" fill="none"></path>
+            </g>
+            
+            <!-- Connection to devices -->
+            <g stroke="#FFFFFF" stroke-width="2" fill-opacity="0.8">
+                <path d="M180,300 L180,340" fill="none"></path>
+                <path d="M320,300 L320,340" fill="none"></path>
+                <path d="M250,340 L180,340" fill="none"></path>
+                <path d="M250,340 L320,340" fill="none"></path>
+            </g>
+            
+            <!-- Devices -->
+            <g transform="translate(160, 350)">
+                <rect x="0" y="0" width="40" height="30" rx="3" fill-opacity="0.8"></rect>
+                <rect x="5" y="5" width="30" height="15" rx="2" fill-opacity="0.6"></rect>
+                <rect x="15" y="30" width="10" height="5" rx="1" fill-opacity="0.8"></rect>
+            </g>
+            <g transform="translate(230, 350)">
+                <path d="M0,5 C0,2.23858 2.23858,0 5,0 L25,0 C27.7614,0 30,2.23858 30,5 L30,25 C30,27.7614 27.7614,30 25,30 L5,30 C2.23858,30 0,27.7614 0,25 L0,5 Z" fill-opacity="0.8"></path>
+                <rect x="5" y="5" width="20" height="15" rx="2" fill-opacity="0.6"></rect>
+                <circle cx="15" cy="25" r="2" fill-opacity="0.9"></circle>
+            </g>
+            <g transform="translate(300, 350)">
+                <path d="M15,0 L30,30 L0,30 L15,0 Z" fill-opacity="0.8"></path>
+                <path d="M10,10 L20,25 L5,25 L10,10 Z" fill-opacity="0.6"></path>
+            </g>
+        </g>
+    </g>
+</svg>

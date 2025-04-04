@@ -191,7 +191,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Initialize Gemini API
       const genAI = new GoogleGenerativeAI(API_KEY);
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      // Use the current model name - gemini-1.5-pro
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
       // System instructions to set the AI's behavior
       const SYSTEM_INSTRUCTIONS = `

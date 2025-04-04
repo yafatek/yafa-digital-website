@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="aiGradient">
+            <stop stop-color="#166534" offset="0%"></stop>
+            <stop stop-color="#22C55E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="url(#aiGradient)" x="0" y="0" width="800" height="600"></rect>
+        <g transform="translate(150, 100)" fill="#FFFFFF" fill-opacity="0.9">
+            <path d="M500,300 C500,355.23 455.23,400 400,400 L100,400 C44.77,400 0,355.23 0,300 L0,100 C0,44.77 44.77,0 100,0 L400,0 C455.23,0 500,44.77 500,100 L500,300 Z" fill-opacity="0.15"></path>
+            
+            <!-- Robot Head -->
+            <g transform="translate(190, 60)">
+                <rect x="0" y="0" width="120" height="140" rx="20" fill-opacity="0.8"></rect>
+                <rect x="20" y="40" width="20" height="20" rx="5" fill-opacity="0.8"></rect>
+                <rect x="80" y="40" width="20" height="20" rx="5" fill-opacity="0.8"></rect>
+                <rect x="40" y="90" width="40" height="10" rx="5" fill-opacity="0.8"></rect>
+                <path d="M0,120 L120,120 L120,130 C120,135.523 115.523,140 110,140 L10,140 C4.477,140 0,135.523 0,130 L0,120 Z" fill-opacity="0.6"></path>
+                <rect x="30" y="125" width="10" height="5" rx="2" fill-opacity="0.9"></rect>
+                <rect x="50" y="125" width="10" height="5" rx="2" fill-opacity="0.9"></rect>
+                <rect x="70" y="125" width="10" height="5" rx="2" fill-opacity="0.9"></rect>
+                <rect x="90" y="125" width="10" height="5" rx="2" fill-opacity="0.9"></rect>
+            </g>
+            
+            <!-- Circuit Lines -->
+            <g fill-opacity="0.8">
+                <path d="M190,200 L190,220 L310,220 L310,200 L190,200 Z"></path>
+                <path d="M190,240 L190,260 L310,260 L310,240 L190,240 Z"></path>
+                <path d="M190,280 L190,300 L310,300 L310,280 L190,280 Z"></path>
+                
+                <path d="M150,200 L170,200 L170,300 L150,300 L150,200 Z"></path>
+                <path d="M330,200 L350,200 L350,300 L330,300 L330,200 Z"></path>
+                
+                <circle cx="190" cy="220" r="5"></circle>
+                <circle cx="310" cy="220" r="5"></circle>
+                <circle cx="190" cy="260" r="5"></circle>
+                <circle cx="310" cy="260" r="5"></circle>
+                <circle cx="190" cy="300" r="5"></circle>
+                <circle cx="310" cy="300" r="5"></circle>
+                
+                <circle cx="170" cy="200" r="5"></circle>
+                <circle cx="170" cy="300" r="5"></circle>
+                <circle cx="330" cy="200" r="5"></circle>
+                <circle cx="330" cy="300" r="5"></circle>
+            </g>
+            
+            <!-- Connection Lines -->
+            <g fill-opacity="0.8">
+                <path d="M150,250 L80,250 L80,180 L110,180"></path>
+                <path d="M350,250 L420,250 L420,180 L390,180"></path>
+                <circle cx="150" cy="250" r="5"></circle>
+                <circle cx="350" cy="250" r="5"></circle>
+                <circle cx="110" cy="180" r="5"></circle>
+                <circle cx="390" cy="180" r="5"></circle>
+            </g>
+            
+            <!-- Data Points -->
+            <g fill-opacity="0.8">
+                <circle cx="100" cy="320" r="10"></circle>
+                <circle cx="140" cy="340" r="10"></circle>
+                <circle cx="180" cy="330" r="10"></circle>
+                <circle cx="220" cy="350" r="10"></circle>
+                <circle cx="260" cy="320" r="10"></circle>
+                <circle cx="300" cy="340" r="10"></circle>
+                <circle cx="340" cy="330" r="10"></circle>
+                <circle cx="380" cy="350" r="10"></circle>
+                
+                <path d="M100,320 L140,340 L180,330 L220,350 L260,320 L300,340 L340,330 L380,350" stroke="#FFFFFF" stroke-width="2" fill="none"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -146,7 +146,8 @@ export const caseStudies: CaseStudy[] = [
       quote: "Yafa Cloud Services transformed our e-commerce platform with their AWS expertise. Our site is now faster, more secure, and our sales have increased dramatically.",
       author: "Sarah Johnson, CEO, RetailPlus"
     },
-    bgColor: 'from-blue-600 to-blue-900'
+    bgColor: 'from-blue-600 to-blue-900',
+    image: '/src/assets/case-studies/ecommerce.svg'
   },
   {
     id: 'servicenow',
@@ -166,7 +167,8 @@ export const caseStudies: CaseStudy[] = [
       quote: "The AI chatbot solution developed by Yafa Cloud Services has revolutionized our customer service. It handles 70% of inquiries automatically and in multiple languages.",
       author: "Michael Chen, CTO, ServiceNow Inc."
     },
-    bgColor: 'from-green-600 to-green-900'
+    bgColor: 'from-green-600 to-green-900',
+    image: '/src/assets/case-studies/ai.svg'
   },
   {
     id: 'finsecure',
@@ -186,7 +188,29 @@ export const caseStudies: CaseStudy[] = [
       quote: "Their cybersecurity expertise is unmatched. Yafa Cloud Services implemented a comprehensive security solution that gives us peace of mind and meets all regulatory requirements.",
       author: "Rebecca Martinez, CISO, FinSecure Bank"
     },
-    bgColor: 'from-blue-600 to-blue-900'
+    bgColor: 'from-red-600 to-red-900',
+    image: '/src/assets/case-studies/security.svg'
+  },
+  {
+    id: 'cloudtech',
+    title: 'Enterprise Cloud Infrastructure Modernization',
+    slug: 'cloudtech-infrastructure-modernization',
+    client: 'CloudTech Solutions',
+    category: 'Cloud Infrastructure',
+    challenge: 'CloudTech Solutions needed to modernize their aging on-premises infrastructure to a scalable, resilient cloud architecture to support their growing global customer base.',
+    solution: 'We designed and implemented a comprehensive hybrid cloud solution using AWS services, with advanced monitoring, auto-scaling, and disaster recovery capabilities.',
+    results: [
+      '99.99% uptime achieved after migration',
+      '65% reduction in operational costs',
+      '3x improvement in application performance',
+      'Seamless scaling to handle 5x traffic increases during peak periods'
+    ],
+    testimonial: {
+      quote: "Yafa Cloud Services delivered a robust cloud infrastructure that exceeded our expectations. Our systems are now more reliable, cost-effective, and infinitely more scalable.",
+      author: "James Peterson, CIO, CloudTech Solutions"
+    },
+    bgColor: 'from-purple-600 to-purple-900',
+    image: '/src/assets/case-studies/cloud.svg'
   }
 ];
 
