@@ -17,6 +17,7 @@ const navigation = [
     ]
   },
   { name: 'Case Studies', path: '/case-studies' },
+  { name: 'Pricing', path: '/pricing' },
   { name: 'Blog', path: '/blog' }
 ];
 
