@@ -10,6 +10,7 @@ import Contact from "@/pages/Contact";
 import Pricing from "@/pages/Pricing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Chat from "@/components/ui/chat";
 
 function Router() {
   return (
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       <Router />
+      <Chat />
       <Toaster />
     </>
   );
