@@ -38,26 +38,66 @@ export default function Chat() {
   const handleSubmit = async () => {
     if (input.trim() === "" || isLoading) return;
     
+    const userInput = input.trim();
+    
     // Add user message to chat history
-    const userMessage = { role: "user" as const, content: input.trim() };
+    const userMessage = { role: "user" as const, content: userInput };
     setChatHistory(prev => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
     
     try {
-      // Send updated history to get AI response
-      const newHistory = [...chatHistory, userMessage];
-      const response = await generateChatResponse(newHistory);
+      console.log("Sending user message:", userInput);
       
-      // Add AI response to chat history
-      setChatHistory(prev => [...prev, { role: "model", content: response }]);
+      // Create a simple test response if the message contains "test"
+      // This helps debug if the API connection is the issue or something else
+      if (userInput.toLowerCase().includes("test")) {
+        console.log("Test message detected, using test response");
+        await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API delay
+        setChatHistory(prev => [
+          ...prev, 
+          { 
+            role: "model", 
+            content: "This is a test response. The chat system is working properly on the frontend. If you're seeing this message but real AI responses fail, there might be an issue with the Gemini API connection." 
+          }
+        ]);
+      } else {
+        // Send updated history to get AI response
+        const newHistory = [...chatHistory, userMessage];
+        console.log("Getting response from Gemini with history length:", newHistory.length);
+        
+        const response = await generateChatResponse(newHistory);
+        console.log("Response received from Gemini");
+        
+        // Add AI response to chat history
+        setChatHistory(prev => [...prev, { role: "model", content: response }]);
+      }
     } catch (error) {
-      console.error("Error in chat:", error);
+      console.error("Error in chat component:", error);
+      
+      // Add detailed error handling
+      let errorMessage = "I'm sorry, I encountered an error. Please try again later.";
+      
+      if (error instanceof Error) {
+        console.error("Error details:", {
+          name: error.name,
+          message: error.message,
+          stack: error.stack
+        });
+        
+        // More specific error messages based on error type
+        if (error.message.includes("API key")) {
+          errorMessage = "API key configuration issue. Please contact support.";
+        } else if (error.message.includes("network") || error.message.includes("fetch")) {
+          errorMessage = "Network connection issue. Please check your internet connection and try again.";
+        }
+      }
+      
       setChatHistory(prev => [
         ...prev,
         {
           role: "model",
-          content: "I'm sorry, I encountered an error. Please try again later.",
+          content: errorMessage,
         },
       ]);
     } finally {
