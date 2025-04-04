@@ -11,6 +11,7 @@ import Pricing from "@/pages/Pricing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Chat from "@/components/ui/chat";
+import WhatsAppWidget from "@/components/ui/whatsapp-widget";
 
 function Router() {
   return (
@@ -38,6 +39,10 @@ function App() {
     <>
       <Router />
       <Chat />
+      <WhatsAppWidget 
+        phoneNumber="971565531542" 
+        message="Hello Yafa Cloud Services! I'd like to learn more about your enterprise cloud solutions."
+      />
       <Toaster />
     </>
   );
