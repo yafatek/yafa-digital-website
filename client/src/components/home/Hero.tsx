@@ -98,11 +98,12 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 transition-colors w-full sm:w-auto justify-center">
-                  Schedule Consultation
+              <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="border-white/30 text-white bg-white/5 hover:bg-white/15 transition-colors w-full sm:w-auto justify-center">
+                  Book Free Consultation
+                  <span className="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded">Calendly →</span>
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
           

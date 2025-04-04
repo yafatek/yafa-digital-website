@@ -238,12 +238,12 @@ const Footer = () => {
               </ul>
               
               <div className="mt-8">
-                <Link href="/contact">
+                <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
                   <Button className="bg-neutral-800 text-white hover:bg-neutral-700 flex">
-                    Contact Us
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    Book Free Consultation
+                    <span className="ml-2 text-xs bg-white/10 px-2 py-0.5 rounded">Calendly →</span>
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </div>

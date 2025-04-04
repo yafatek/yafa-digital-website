@@ -189,14 +189,14 @@ const Header = () => {
                   Case Studies
                 </Button>
               </Link>
-              <Link href="/contact">
+              <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
                 <Button 
                   className="bg-primary text-white font-medium hover:bg-primary/90 transition-all"
                   size="sm"
                 >
                   Free Consultation
                 </Button>
-              </Link>
+              </a>
             </div>
           </nav>
         </div>
@@ -279,11 +279,11 @@ const Header = () => {
                         Case Studies
                       </Button>
                     </Link>
-                    <Link href="/contact">
+                    <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
                       <Button className="w-full bg-primary text-white">
                         Free Consultation
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
