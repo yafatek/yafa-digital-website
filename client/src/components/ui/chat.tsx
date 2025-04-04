@@ -2,7 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tooltip } from "@/components/ui/tooltip";
+import { 
+  TooltipProvider, 
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { generateChatResponse, ChatMessage } from "@/lib/gemini";
 import { MessageSquare, Send, X, Minimize2, Maximize2 } from "lucide-react";
@@ -103,28 +108,41 @@ export default function Chat() {
               <h3 className="font-medium">Yafa AI Assistant</h3>
             </div>
             <div className="flex gap-1.5">
-              <Tooltip>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="size-7 rounded-full"
-                  onClick={toggleMinimize}
-                  aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
-                >
-                  {isMinimized ? <Maximize2 className="size-4" /> : <Minimize2 className="size-4" />}
-                </Button>
-              </Tooltip>
-              <Tooltip>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="size-7 rounded-full hover:bg-red-100 hover:text-red-500"
-                  onClick={() => setIsOpen(false)}
-                  aria-label="Close chat"
-                >
-                  <X className="size-4" />
-                </Button>
-              </Tooltip>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="size-7 rounded-full"
+                      onClick={toggleMinimize}
+                      aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
+                    >
+                      {isMinimized ? <Maximize2 className="size-4" /> : <Minimize2 className="size-4" />}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    {isMinimized ? "Maximize chat" : "Minimize chat"}
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="size-7 rounded-full hover:bg-red-100 hover:text-red-500"
+                      onClick={() => setIsOpen(false)}
+                      aria-label="Close chat"
+                    >
+                      <X className="size-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Close chat</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
           
