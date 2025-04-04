@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { AnimatedElement } from "@/components/ui/animated-element";
 import { CheckIcon } from "lucide-react";
+import { PricingCalculators } from "@/components/pricing/PricingCalculators";
 
 export default function Pricing() {
   return (
@@ -174,6 +175,24 @@ export default function Pricing() {
         </div>
       </section>
 
+      {/* Interactive Pricing Calculators Section */}
+      <section className="section">
+        <div className="container">
+          <div className="text-center mb-10">
+            <AnimatedElement>
+              <h2 className="section-title mx-auto text-center">Calculate Your Custom Price</h2>
+            </AnimatedElement>
+            <AnimatedElement delay="100">
+              <p className="section-subtitle mx-auto text-center">
+                Use our interactive calculators to get an accurate estimate for your specific needs and requirements.
+              </p>
+            </AnimatedElement>
+          </div>
+          
+          <PricingCalculators />
+        </div>
+      </section>
+      
       {/* Custom solutions */}
       <section className="section-tight">
         <div className="container">
