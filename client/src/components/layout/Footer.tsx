@@ -12,6 +12,7 @@ import {
   Send,
   ChevronRight
 } from 'lucide-react';
+import yafaLogoLight from '../../assets/yafa-logo-light.png';
 
 const Footer = () => {
   return (
@@ -78,7 +79,13 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
             <div className="lg:pr-8">
               <div className="mb-4">
-                <h3 className="text-xl font-bold mb-6 text-white">Yafa Cloud Services</h3>
+                <div className="mb-6">
+                  <img 
+                    src={yafaLogoLight} 
+                    alt="Yafa Cloud Services" 
+                    className="h-10"
+                  />
+                </div>
                 <p className="text-neutral-400 leading-relaxed mb-6">
                   Enterprise-grade cloud infrastructure and AI solutions for global businesses seeking operational excellence and digital transformation.
                 </p>

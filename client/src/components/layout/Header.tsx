@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import yafaLogoDark from '../../assets/yafa-logo-dark.png';
+import yafaLogoLight from '../../assets/yafa-logo-light.png';
 
 const navigation = [
   { name: 'Home', path: '/' },
@@ -101,9 +103,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <span className="font-bold text-2xl cursor-pointer text-neutral-900">
-                <span className="text-primary">Yafa</span> Cloud Services
-              </span>
+              <img 
+                src={isScrolled ? yafaLogoDark : yafaLogoDark} 
+                alt="Yafa Cloud Services" 
+                className="h-9 md:h-10 cursor-pointer transition-all"
+              />
             </Link>
           </div>
           
