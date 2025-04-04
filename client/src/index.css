@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    --corporate-blue: 222 47% 25%;
-    --corporate-dark: 224 47% 20%;
-    --corporate-light: 222 30% 65%;
-    --corporate-accent: 210 58% 50%;
-    --neutral-900: 222 28% 17%;
-    --neutral-800: 222 20% 25%;
-    --neutral-700: 222 15% 35%;
-    --neutral-600: 222 12% 45%;
-    --neutral-500: 222 10% 55%;
-    --neutral-400: 222 10% 70%;
-    --neutral-300: 222 12% 82%;
-    --neutral-200: 222 14% 92%;
-    --neutral-100: 222 16% 96%;
-    --neutral-50: 222 20% 98%;
+    --corporate-blue: 211 100% 50%;
+    --corporate-dark: 211 100% 45%;
+    --corporate-light: 211 100% 95%;
+    --corporate-accent: 211 100% 60%;
+    --neutral-900: 220 25% 10%;
+    --neutral-800: 220 20% 20%;
+    --neutral-700: 220 15% 30%;
+    --neutral-600: 220 12% 40%;
+    --neutral-500: 220 10% 50%;
+    --neutral-400: 220 10% 60%;
+    --neutral-300: 220 10% 75%;
+    --neutral-200: 220 15% 90%;
+    --neutral-100: 220 20% 96%;
+    --neutral-50: 220 30% 99%;
   }
 
   * {
@@ -27,17 +27,18 @@
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    @apply antialiased bg-white text-neutral-900 text-[15px];
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+    @apply antialiased bg-white text-neutral-900 text-[16px] leading-relaxed;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold tracking-tight text-slate-800;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    @apply font-medium tracking-tight text-neutral-900;
+    letter-spacing: -0.025em;
   }
   
   p {
-    @apply leading-relaxed text-neutral-700;
+    @apply leading-relaxed text-neutral-700 font-normal;
   }
   
   /* Global link styling */
@@ -49,44 +50,44 @@
 @layer components {
   /* === LAYOUT COMPONENTS === */
   .container {
-    @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+    @apply px-6 sm:px-8 lg:px-12 mx-auto max-w-7xl;
   }
   
   .section {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28 lg:py-32;
   }
   
   .section-tight {
-    @apply py-10 md:py-16;
+    @apply py-12 md:py-16 lg:py-20;
   }
   
   /* === TYPOGRAPHY === */
   .heading-xl {
-    @apply text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-slate-800;
-    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-4xl sm:text-5xl md:text-6xl font-medium leading-tight text-neutral-900;
+    letter-spacing: -0.035em;
   }
   
   .heading-lg {
-    @apply text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight text-slate-800;
-    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-neutral-900;
+    letter-spacing: -0.03em;
   }
   
   .heading-md {
-    @apply text-xl sm:text-2xl font-semibold leading-tight text-slate-800;
-    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-xl sm:text-2xl md:text-3xl font-medium leading-tight text-neutral-900;
+    letter-spacing: -0.025em;
   }
   
   .heading-sm {
-    @apply text-lg font-semibold leading-tight text-slate-800;
-    font-family: 'Playfair Display', Georgia, serif;
+    @apply text-lg md:text-xl font-medium leading-tight text-neutral-900;
+    letter-spacing: -0.015em;
   }
   
   .text-body-lg {
-    @apply text-lg text-neutral-700 leading-relaxed;
+    @apply text-lg md:text-xl text-neutral-700 leading-relaxed font-light;
   }
   
   .text-body {
-    @apply text-neutral-700 leading-relaxed;
+    @apply text-neutral-700 leading-relaxed font-normal;
   }
   
   .text-body-sm {
@@ -95,66 +96,75 @@
   
   /* Section components */
   .section-title {
-    @apply heading-lg mb-4 text-neutral-900;
+    @apply heading-lg mb-6 text-neutral-900;
+    
+    &:before {
+      content: "";
+      @apply block w-16 h-1 bg-primary/70 rounded-full mb-5;
+    }
   }
   
   .section-subtitle {
-    @apply text-body-lg max-w-3xl mb-12;
+    @apply text-body-lg max-w-2xl mb-16 font-light text-neutral-600;
   }
   
   /* === UI COMPONENTS === */
   /* Header & Navigation */
   .nav-item {
-    @apply font-medium text-neutral-700 hover:text-primary/90 transition-all;
+    @apply font-medium text-neutral-700 hover:text-neutral-900 transition-all px-3 py-2 rounded-full;
     position: relative;
     
-    &:after {
-      content: '';
-      @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary/70 transition-all duration-300;
-    }
-    
-    &:hover:after {
-      @apply w-full;
+    &:hover {
+      @apply bg-neutral-100/80 shadow-sm;
+      backdrop-filter: blur(8px);
     }
   }
   
   .nav-item-active {
-    @apply text-primary font-medium relative;
-    &:after {
+    @apply text-primary font-medium bg-primary/5 px-3 py-2 rounded-full;
+    position: relative;
+    
+    &:before {
       content: '';
-      @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary;
+      @apply absolute top-0 left-0 w-full h-full rounded-full opacity-10 bg-primary;
     }
   }
   
   /* Cards & Containers */
   .card {
-    @apply bg-white rounded-lg border border-neutral-200/80 shadow-sm overflow-hidden transition duration-300;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+    @apply bg-white rounded-2xl overflow-hidden transition duration-300;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 10px 30px -10px rgba(0,0,0,0.06);
+    backdrop-filter: blur(20px);
+    transform: translateZ(0);
   }
   
   .card-hover {
-    @apply hover:shadow-md hover:border-neutral-300 transition-all duration-300;
+    @apply hover:shadow-lg transition-all duration-300;
   }
   
   .card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.03);
+    transform: translateY(-3px) translateZ(0);
+    box-shadow: 0 10px 40px -12px rgba(0,0,0,0.1), 0 8px 20px -8px rgba(0,0,0,0.05);
   }
   
   /* Hero Section */
   .hero-section {
-    @apply text-white py-16 md:py-24 relative overflow-hidden;
-    background: linear-gradient(135deg, hsl(var(--corporate-dark)) 0%, hsl(var(--corporate-blue)) 50%, hsl(var(--corporate-accent)) 100%);
+    @apply text-neutral-900 py-16 md:py-24 lg:py-32 relative overflow-hidden;
+    background: linear-gradient(180deg, #fff 0%, hsl(var(--corporate-light)) 100%);
   }
   
   .hero-pattern {
-    @apply absolute inset-0 opacity-10;
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.12'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    @apply absolute inset-0 opacity-5;
+    background-image: radial-gradient(circle at 25px 25px, rgba(0, 0, 0, 0.1) 2%, transparent 0%), 
+                       radial-gradient(circle at 75px 75px, rgba(0, 0, 0, 0.1) 2%, transparent 0%);
+    background-size: 100px 100px;
   }
   
   /* Feature Icons & Highlights */
   .feature-icon {
-    @apply w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center text-primary shrink-0;
+    @apply w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0;
+    box-shadow: 0 4px 12px -4px rgba(var(--corporate-blue), 0.2);
+    backdrop-filter: blur(8px);
   }
   
   .highlight-item {
@@ -184,12 +194,28 @@
   
   /* Call to Action */
   .cta-section {
-    @apply bg-neutral-50 border-y border-neutral-200 py-12 md:py-16;
+    @apply py-16 md:py-20 lg:py-24 relative overflow-hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(245,248,255,1) 100%);
+    
+    &:before {
+      content: "";
+      @apply absolute inset-0 opacity-10;
+      background-image: radial-gradient(circle at 100px 100px, rgba(0, 0, 0, 0.05) 2%, transparent 0%);
+      background-size: 60px 60px;
+    }
   }
   
   /* Testimonials */
   .testimonial-card {
-    @apply border-l-4 border-primary bg-white p-6 rounded-lg shadow-sm;
+    @apply bg-white p-8 rounded-2xl;
+    box-shadow: 0 2px 20px -8px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    
+    &:before {
+      content: "";
+      @apply absolute left-0 top-0 h-full w-1.5 bg-primary opacity-80;
+    }
   }
   
   /* Custom Gradients & Backgrounds */
