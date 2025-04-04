@@ -172,7 +172,7 @@ const About = () => {
               </div>
             </AnimatedElement>
 
-            <AnimatedElement delay="150">
+            <AnimatedElement delay="100">
               <div className="highlight-item">
                 <Clock className="highlight-icon" />
                 <div>
@@ -184,7 +184,7 @@ const About = () => {
               </div>
             </AnimatedElement>
 
-            <AnimatedElement delay="250">
+            <AnimatedElement delay="200">
               <div className="highlight-item">
                 <Globe className="highlight-icon" />
                 <div>
@@ -196,7 +196,7 @@ const About = () => {
               </div>
             </AnimatedElement>
 
-            <AnimatedElement delay="350">
+            <AnimatedElement delay="300">
               <div className="highlight-item">
                 <Headphones className="highlight-icon" />
                 <div>
@@ -234,7 +234,11 @@ const About = () => {
               { name: 'Carlos Rodriguez', title: 'Cybersecurity Director' },
               { name: 'Jennifer Wang', title: 'Client Success Manager' }
             ].map((member, index) => (
-              <AnimatedElement key={index} delay={(index * 100).toString() as any}>
+              <AnimatedElement key={index} delay={index === 0 ? "none" : 
+                              index === 1 ? "100" : 
+                              index === 2 ? "200" : 
+                              index === 3 ? "300" : 
+                              index === 4 ? "400" : "500"}>
                 <div className="card overflow-hidden">
                   <div className="bg-neutral-100 aspect-[4/3] flex items-center justify-center">
                     <svg className="w-20 h-20 text-primary/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
