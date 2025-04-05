@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 // Import customer logos
 import tunjaraLogo from '@/assets/customer-logos/tunjara.png';
-import orderqLogo from '@/assets/customer-logos/orderq_black_bg.png';
+import orderqLogo from '@/assets/customer-logos/orderq.png';
 import macmaniaLogo from '@/assets/customer-logos/macmania.png';
 import touchesLogo from '@/assets/customer-logos/touches.png';
 import gramiLogo from '@/assets/customer-logos/grami.png';

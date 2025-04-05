@@ -39,7 +39,7 @@ function Router() {
 
 function App() {
   return (
-    <>
+    <div className="app-container overflow-x-hidden w-full relative">
       <Router />
       <Chat />
       <WhatsAppWidget 
@@ -47,7 +47,7 @@ function App() {
         message="Hello Yafa Cloud Services! I'd like to learn more about your enterprise cloud solutions."
       />
       <Toaster />
-    </>
+    </div>
   );
 }
 

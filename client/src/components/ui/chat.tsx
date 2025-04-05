@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { generateChatResponse, ChatMessage } from "@/lib/gemini";
-import { MessageSquare, Send, X, Minimize2, Maximize2 } from "lucide-react";
+import { MessageSquare, Send, X, Minimize2, Maximize2, Bot } from "lucide-react";
 
 export default function Chat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,12 +27,40 @@ export default function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   
+  const [retryTimer, setRetryTimer] = useState<number | null>(null);
+  
   // Scroll to bottom of chat whenever history changes
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [chatHistory]);
+
+  // Close chat and reset minimized state when screen is small and chat is closed
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640 && !isOpen) {
+        setIsMinimized(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen]);
+  
+  // Function to handle retry with countdown
+  const startRetryCountdown = (seconds: number) => {
+    setRetryTimer(seconds);
+    const countdownInterval = setInterval(() => {
+      setRetryTimer(prev => {
+        if (prev === null || prev <= 1) {
+          clearInterval(countdownInterval);
+          return null;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
   
   // Handle submitting the user message
   const handleSubmit = async () => {
@@ -90,6 +118,10 @@ export default function Chat() {
           errorMessage = "API key configuration issue. Please contact support.";
         } else if (error.message.includes("network") || error.message.includes("fetch")) {
           errorMessage = "Network connection issue. Please check your internet connection and try again.";
+        } else if (error.message.includes("429") || error.message.includes("Too Many Requests") || error.message.includes("quota")) {
+          errorMessage = "I've reached my rate limit for the moment. This is because I'm using Google's free tier API. Please wait 1-2 minutes and try again, or contact us directly for immediate assistance.";
+          // Start a 60-second countdown
+          startRetryCountdown(60);
         }
       }
       
@@ -124,10 +156,10 @@ export default function Chat() {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-5 right-5 rounded-full size-14 shadow-lg z-50 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+          className="fixed bottom-5 right-5 rounded-full w-14 h-14 shadow-lg z-50 bg-blue-500 hover:bg-blue-600 transition-all duration-300"
           aria-label="Open chat"
         >
-          <MessageSquare className="size-6" />
+          <Bot className="w-6 h-6" />
         </Button>
       )}
       
@@ -135,54 +167,44 @@ export default function Chat() {
       {isOpen && (
         <div 
           className={cn(
-            "fixed bottom-5 right-5 bg-background border rounded-2xl shadow-lg z-50 transition-all duration-300 flex flex-col",
-            isMinimized ? "w-72 h-16" : "w-96 h-[32rem]"
+            "fixed z-50 transition-all duration-300 ease-in-out overflow-hidden bg-white rounded-xl shadow-xl border border-gray-200",
+            isMinimized 
+              ? "bottom-5 right-5 w-72 h-14"
+              : "sm:bottom-5 sm:right-5 sm:w-[380px] sm:h-[500px] bottom-0 right-0 w-full h-[100vh] sm:max-h-[90vh]"
           )}
+          style={{
+            maxWidth: isMinimized ? '18rem' : window.innerWidth < 640 ? '100%' : '380px',
+            left: window.innerWidth < 640 && !isMinimized ? '0' : 'auto'
+          }}
         >
           {/* Chat header */}
-          <div className="flex items-center justify-between p-4 border-b">
+          <div className="flex items-center justify-between p-3 border-b bg-gradient-to-r from-blue-50 to-blue-100/30">
             <div className="flex items-center gap-2">
-              <div className="size-8 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center">
-                <MessageSquare className="size-4 text-white" />
+              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                <Bot className="w-5 h-5 text-white" />
               </div>
-              <h3 className="font-medium">Yafa AI Assistant</h3>
+              <h3 className="font-medium text-gray-800">YAFA AI Assistant</h3>
             </div>
-            <div className="flex gap-1.5">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="size-7 rounded-full"
-                      onClick={toggleMinimize}
-                      aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
-                    >
-                      {isMinimized ? <Maximize2 className="size-4" /> : <Minimize2 className="size-4" />}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    {isMinimized ? "Maximize chat" : "Minimize chat"}
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+            <div className="flex gap-1">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-8 h-8 rounded-full hover:bg-gray-100"
+                onClick={toggleMinimize}
+                aria-label={isMinimized ? "Maximize chat" : "Minimize chat"}
+              >
+                {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+              </Button>
               
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="size-7 rounded-full hover:bg-red-100 hover:text-red-500"
-                      onClick={() => setIsOpen(false)}
-                      aria-label="Close chat"
-                    >
-                      <X className="size-4" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Close chat</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-8 h-8 rounded-full hover:bg-gray-100 hover:text-red-500"
+                onClick={() => setIsOpen(false)}
+                aria-label="Close chat"
+              >
+                <X className="w-4 h-4" />
+              </Button>
             </div>
           </div>
           
@@ -190,27 +212,46 @@ export default function Chat() {
           {!isMinimized && (
             <>
               {/* Messages area */}
-              <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
-                <div className="flex flex-col gap-4">
+              <ScrollArea className="flex-1 p-4 h-[calc(100%-120px)] overflow-x-hidden">
+                <div className="flex flex-col gap-3 w-full overflow-x-hidden">
                   {chatHistory.map((message, index) => (
                     <div
                       key={index}
                       className={cn(
-                        "max-w-[85%] rounded-xl p-3",
+                        "max-w-[85%] rounded-xl p-3 break-words overflow-hidden whitespace-normal word-break-break-word",
                         message.role === "user"
-                          ? "bg-primary text-primary-foreground ml-auto"
-                          : "bg-muted"
+                          ? "bg-blue-500 text-white ml-auto rounded-br-none"
+                          : index === chatHistory.length - 1 && message.content.includes("rate limit")
+                            ? "bg-amber-50 border border-amber-200 text-amber-800 rounded-bl-none"
+                            : "bg-gray-100 text-gray-800 rounded-bl-none"
                       )}
                     >
                       {message.content}
+                      
+                      {/* Show retry button for rate limit errors */}
+                      {index === chatHistory.length - 1 && message.content.includes("rate limit") && (
+                        <div className="mt-3 flex items-center">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className={`text-xs rounded-full px-3 py-1 h-auto ${retryTimer !== null ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : 'bg-amber-100 hover:bg-amber-200 text-amber-800 border-amber-300'}`}
+                            onClick={() => retryTimer === null && handleSubmit()}
+                            disabled={retryTimer !== null}
+                          >
+                            {retryTimer !== null 
+                              ? `Retry in ${retryTimer}s` 
+                              : "Try again"}
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   ))}
                   {isLoading && (
-                    <div className="bg-muted max-w-[85%] rounded-xl p-3">
+                    <div className="bg-gray-100 max-w-[85%] rounded-xl p-3 rounded-bl-none">
                       <div className="flex gap-1.5">
-                        <div className="size-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
-                        <div className="size-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></div>
-                        <div className="size-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "600ms" }}></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "600ms" }}></div>
                       </div>
                     </div>
                   )}
@@ -219,33 +260,57 @@ export default function Chat() {
               </ScrollArea>
               
               {/* Input area */}
-              <div className="p-4 border-t">
-                <div className="flex gap-2">
+              <div className="p-3 border-t bg-white w-full overflow-hidden">
+                <div className="flex gap-2 w-full">
                   <Textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Type your message..."
-                    className="resize-none"
+                    className="resize-none min-h-[40px] max-h-[120px] rounded-lg border-gray-300 focus-visible:ring-blue-500 w-full"
                     rows={1}
                     disabled={isLoading}
                   />
                   <Button
                     onClick={handleSubmit}
-                    size="icon"
+                    className="shrink-0 rounded-full w-10 h-10 bg-blue-500 hover:bg-blue-600"
                     disabled={isLoading || input.trim() === ""}
-                    className="shrink-0"
+                    aria-label="Send message"
                   >
-                    <Send className="size-4" />
+                    <Send className="w-4 h-4" />
                   </Button>
                 </div>
-                <div className="mt-2 text-xs text-center text-muted-foreground">
+                <div className="mt-2 text-xs text-center text-gray-400">
                   Powered by Google Gemini
                 </div>
               </div>
             </>
           )}
         </div>
+      )}
+
+      {/* Prevent horizontal scrolling when chat is open */}
+      {isOpen && (
+        <style jsx global>{`
+          body, html {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
+          }
+          
+          #root, #__next {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+          }
+          
+          /* Ensure all absolute positioned elements stay within bounds */
+          .fixed {
+            max-width: 100vw;
+          }
+        `}</style>
       )}
     </>
   );
