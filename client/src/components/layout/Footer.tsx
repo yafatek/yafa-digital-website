@@ -11,7 +11,7 @@ import {
   Send,
   ChevronRight
 } from 'lucide-react';
-import yafaLogoLight from '../../assets/yafa-logo-light.png';
+import yafaLogoBlackBg from '../../assets/yafa-logo-black-bg.png';
 
 // Instagram icon component
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -40,16 +40,12 @@ const Footer = () => {
           <div className="flex flex-wrap justify-between items-center">
             <div className="flex items-center">
               <Phone className="h-5 w-5 text-primary mr-3" />
-              <span className="text-neutral-700 text-sm font-medium">Contact us today: +971 565531542</span>
+              <span className="text-neutral-700 text-sm font-medium">Contact us today: +971565531542</span>
             </div>
             <div className="flex gap-x-8">
-              <a href="mailto:info@yafa.dev" className="flex items-center text-neutral-700 hover:text-primary transition-colors">
+              <a href="mailto:admin@yafa.digital" className="flex items-center text-neutral-700 hover:text-primary transition-colors">
                 <Mail className="h-4 w-4 mr-1.5" />
-                <span className="text-sm">info@yafa.dev</span>
-              </a>
-              <a href="#" className="flex items-center text-neutral-700 hover:text-primary transition-colors">
-                <MapPin className="h-4 w-4 mr-1.5" />
-                <span className="text-sm">Find our offices</span>
+                <span className="text-sm">admin@yafa.digital</span>
               </a>
             </div>
           </div>
@@ -98,7 +94,7 @@ const Footer = () => {
               <div className="mb-4">
                 <div className="mb-6">
                   <img 
-                    src={yafaLogoLight} 
+                    src={yafaLogoBlackBg} 
                     alt="Yafa Cloud Services" 
                     className="h-10"
                   />
@@ -222,18 +218,17 @@ const Footer = () => {
                 <li className="flex">
                   <MapPin className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-0.5" />
                   <span className="text-neutral-400">
-                    1234 Technology Drive<br />
-                    Suite 500<br />
-                    San Francisco, CA 94103
+                    Business Bay<br />
+                    Dubai, UAE
                   </span>
                 </li>
                 <li className="flex">
                   <Phone className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                  <span className="text-neutral-400">+971 565531542</span>
+                  <span className="text-neutral-400">+971565531542</span>
                 </li>
                 <li className="flex">
                   <Mail className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                  <span className="text-neutral-400">info@yafa.dev</span>
+                  <span className="text-neutral-400">admin@yafa.digital</span>
                 </li>
               </ul>
               

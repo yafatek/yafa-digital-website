@@ -8,6 +8,7 @@ import CaseStudies from "@/pages/CaseStudies";
 import Blog from "@/pages/Blog";
 import Contact from "@/pages/Contact";
 import Pricing from "@/pages/Pricing";
+import AISolutions from "@/pages/AISolutions";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Chat from "@/components/ui/chat";
@@ -22,6 +23,7 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/services" component={Services} />
+          <Route path="/ai-solutions" component={AISolutions} />
           <Route path="/case-studies" component={CaseStudies} />
           <Route path="/blog" component={Blog} />
           <Route path="/pricing" component={Pricing} />

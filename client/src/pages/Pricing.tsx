@@ -49,7 +49,7 @@ export default function Pricing() {
                     <span className="text-4xl font-medium">$199</span>
                     <span className="text-neutral-600">/month</span>
                   </div>
-                  <Button className="w-full mb-6">Get Started</Button>
+                  <Button className="w-full mb-6 bg-[#3480cc] text-white hover:bg-[#3480cc]/90">Get Started</Button>
                   <div className="space-y-3">
                     <div className="flex items-start">
                       <CheckIcon className="h-5 w-5 text-primary/60 mt-0.5 flex-shrink-0" />
@@ -89,7 +89,7 @@ export default function Pricing() {
                     <span className="text-4xl font-medium">$499</span>
                     <span className="text-neutral-600">/month</span>
                   </div>
-                  <Button className="w-full mb-6">Get Started</Button>
+                  <Button className="w-full mb-6 bg-[#3480cc] text-white hover:bg-[#3480cc]/90">Get Started</Button>
                   <div className="space-y-3">
                     <div className="flex items-start">
                       <CheckIcon className="h-5 w-5 text-primary/60 mt-0.5 flex-shrink-0" />
@@ -133,7 +133,7 @@ export default function Pricing() {
                   <div className="mb-6">
                     <span className="text-4xl font-medium">Custom</span>
                   </div>
-                  <Button className="w-full mb-6" variant="outline">Contact Sales</Button>
+                  <Button className="w-full mb-6 bg-[#3480cc] text-white hover:bg-[#3480cc]/90">Contact Sales</Button>
                   <div className="space-y-3">
                     <div className="flex items-start">
                       <CheckIcon className="h-5 w-5 text-primary/60 mt-0.5 flex-shrink-0" />
@@ -206,7 +206,7 @@ export default function Pricing() {
               </p>
             </AnimatedElement>
             <AnimatedElement delay="200">
-              <Button size="lg">Contact Us</Button>
+              <Button size="lg" className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">Contact Us</Button>
             </AnimatedElement>
           </div>
         </div>
@@ -282,8 +282,8 @@ export default function Pricing() {
             </AnimatedElement>
             <AnimatedElement delay="200">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg">Get Started</Button>
-                <Button variant="outline" size="lg">Schedule a Demo</Button>
+                <Button size="lg" className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">Get Started</Button>
+                <Button variant="outline" size="lg" className="border-[#3480cc] text-[#3480cc] hover:bg-[#3480cc]/10">Schedule a Demo</Button>
               </div>
             </AnimatedElement>
           </div>

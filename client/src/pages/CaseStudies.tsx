@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { caseStudies } from '@/lib/data';
+import { useEffect } from 'react';
 
 // Import SVG images
 import ecommerceSvg from '../assets/case-studies/ecommerce.svg';
@@ -10,13 +11,32 @@ import securitySvg from '../assets/case-studies/security.svg';
 import cloudSvg from '../assets/case-studies/cloud.svg';
 
 const CaseStudiesPage = () => {
+  // Handle hash navigation
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1); // Remove the # symbol
+      const element = document.getElementById(id);
+      
+      if (element) {
+        // Add a slight delay to ensure the page has fully rendered
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    } else {
+      // No hash, scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-[#003366] text-white py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold font-heading mb-6 tracking-tight">Case Studies</h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto font-medium opacity-95">
+          <h1 className="text-4xl md:text-5xl font-extrabold font-heading mb-6 tracking-tight text-white">Case Studies</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto font-medium text-white">
             Explore how we've helped businesses achieve their goals through innovative cloud and AI solutions
           </p>
         </div>
@@ -109,7 +129,7 @@ const CaseStudiesPage = () => {
                   </div>
                   
                   <Link href="/contact">
-                    <Button className="bg-[#003366] text-white hover:bg-opacity-90">
+                    <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
                       Discuss Your Project
                     </Button>
                   </Link>
@@ -123,12 +143,12 @@ const CaseStudiesPage = () => {
       {/* CTA Section */}
       <section className="py-20 bg-[#003366] text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading mb-6 tracking-tight">Ready to Achieve Similar Results?</h2>
-          <p className="text-lg max-w-3xl mx-auto mb-8 font-medium leading-relaxed opacity-95">
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading mb-6 tracking-tight text-white">Ready to Achieve Similar Results?</h2>
+          <p className="text-lg max-w-3xl mx-auto mb-8 font-medium leading-relaxed text-white">
             Let's discuss how our cloud and AI solutions can help your business overcome challenges and reach new heights.
           </p>
           <Link href="/contact">
-            <Button className="bg-[#2E8B57] text-white font-heading font-semibold px-8 py-3 text-lg hover:bg-opacity-90 transition-colors duration-300">
+            <Button className="bg-white hover:bg-white/90 text-[#3480cc] font-heading font-semibold px-8 py-3 text-lg transition-colors duration-300">
               Get Started Today
             </Button>
           </Link>

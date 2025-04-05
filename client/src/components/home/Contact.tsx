@@ -77,9 +77,9 @@ const Contact = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#003366] mb-6">Get In Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#003366] mb-6">Ready to Leverage Cloud & AI?</h2>
             <p className="text-gray-700 mb-8 text-lg">
-              Have questions about our services or want to discuss your project? Our team is ready to help you. Reach out to us using the contact form or through our contact information.
+              Schedule your complimentary consultation today and discuss your technical challenges with our Dubai-based experts. We're here to help your business reach its full potential with the right technology solutions.
             </p>
             
             <div className="space-y-6">
@@ -89,7 +89,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-heading font-bold text-lg">Our Location</h3>
-                  <p className="text-gray-700">123 Business Avenue, Suite 100<br />New York, NY 10001</p>
+                  <p className="text-gray-700">Business Bay<br />Dubai, UAE</p>
                 </div>
               </div>
               
@@ -99,7 +99,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-heading font-bold text-lg">Email Us</h3>
-                  <p className="text-gray-700">contact@yafacloudservices.com<br />support@yafacloudservices.com</p>
+                  <p className="text-gray-700">admin@yafa.digital</p>
                 </div>
               </div>
               
@@ -108,8 +108,8 @@ const Contact = () => {
                   <Phone className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-lg">Call Us</h3>
-                  <p className="text-gray-700">+1 (555) 123-4567<br />+1 (555) 987-6543</p>
+                  <h3 className="font-heading font-bold text-lg">Call Us / WhatsApp</h3>
+                  <p className="text-gray-700">+971565531542</p>
                 </div>
               </div>
             </div>
@@ -117,16 +117,13 @@ const Contact = () => {
             <div className="mt-10">
               <h3 className="font-heading font-bold text-lg mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
+                <a href="http://linkedin.com/company/yafacs" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
+                <a href="https://www.facebook.com/YafaTek" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
+                <a href="https://www.instagram.com/yafa_cs_official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
                   <Instagram className="h-5 w-5" />
                 </a>
               </div>
@@ -136,7 +133,7 @@ const Contact = () => {
           <div className="lg:w-1/2 bg-gray-50 p-8 rounded-lg shadow-lg">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <h3 className="text-2xl font-bold font-heading text-[#003366] mb-6">Send Us a Message</h3>
+                <h3 className="text-2xl font-bold font-heading text-[#003366] mb-6">Schedule Your Consultation</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
@@ -195,11 +192,13 @@ const Contact = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="cloud">Cloud Solutions</SelectItem>
-                          <SelectItem value="ecommerce">E-Commerce Solutions</SelectItem>
-                          <SelectItem value="marketing">Digital Marketing</SelectItem>
-                          <SelectItem value="cybersecurity">Cybersecurity Services</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          <SelectItem value="cloud-infrastructure">Cloud Infrastructure Services</SelectItem>
+                          <SelectItem value="ai-chatbots">AI Chatbots (WhatsApp & Web)</SelectItem>
+                          <SelectItem value="ai-automation">AI-Driven Automation</SelectItem>
+                          <SelectItem value="ai-agents">Intelligent AI Agents</SelectItem>
+                          <SelectItem value="edge-computing">Edge Computing & Custom IT Labs</SelectItem>
+                          <SelectItem value="cost-optimization">Cloud Cost Optimization</SelectItem>
+                          <SelectItem value="other">Other Services</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -215,7 +214,7 @@ const Contact = () => {
                       <FormLabel>Message</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Tell us about your project or inquiry" 
+                          placeholder="Tell us about your business challenges and technical needs" 
                           className="resize-none" 
                           rows={5}
                           {...field} 
@@ -231,7 +230,7 @@ const Contact = () => {
                   className="w-full bg-[#2E8B57] text-white font-heading font-semibold hover:bg-opacity-90 transition-colors duration-300"
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending ? 'Sending...' : 'Send Message'}
+                  {mutation.isPending ? 'Sending...' : 'Schedule Consultation'}
                 </Button>
               </form>
             </Form>

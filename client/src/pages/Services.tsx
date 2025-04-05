@@ -18,7 +18,12 @@ import {
   ChartBar,
   Shield,
   Lock,
-  Eye 
+  Eye,
+  Building2,
+  Hotel,
+  UtensilsCrossed,
+  Car,
+  Plane
 } from 'lucide-react';
 
 const Services = () => {
@@ -27,8 +32,8 @@ const Services = () => {
       {/* Hero Section */}
       <section className="bg-[#003366] text-white py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Our Services</h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-white">Our Services</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto text-white">
             Comprehensive cloud and AI solutions tailored to your business needs
           </p>
         </div>
@@ -86,7 +91,7 @@ const Services = () => {
               </div>
               
               <Link href="/contact">
-                <Button className="bg-[#003366] text-white hover:bg-opacity-90">
+                <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
                   Request Cloud Consultation
                 </Button>
               </Link>
@@ -184,7 +189,7 @@ const Services = () => {
               </div>
               
               <Link href="/contact">
-                <Button className="bg-[#2E8B57] text-white hover:bg-opacity-90">
+                <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
                   Boost Your E-Commerce Business
                 </Button>
               </Link>
@@ -282,8 +287,8 @@ const Services = () => {
               </div>
               
               <Link href="/contact">
-                <Button className="bg-[#003366] text-white hover:bg-opacity-90">
-                  Enhance Your Digital Presence
+                <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
+                  Enhance Your Marketing Strategy
                 </Button>
               </Link>
             </div>
@@ -380,8 +385,8 @@ const Services = () => {
               </div>
               
               <Link href="/contact">
-                <Button className="bg-[#2E8B57] text-white hover:bg-opacity-90">
-                  Secure Your Business Today
+                <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
+                  Strengthen Your Security
                 </Button>
               </Link>
             </div>
@@ -434,10 +439,256 @@ const Services = () => {
             Contact us today to discuss how our services can help your business grow, innovate, and stay secure in the digital landscape.
           </p>
           <Link href="/contact">
-            <Button className="bg-[#2E8B57] text-white font-heading font-semibold px-8 py-3 text-lg hover:bg-opacity-90 transition-colors duration-300">
+            <Button className="bg-[#3480cc] text-white font-heading font-semibold px-8 py-3 text-lg hover:bg-[#3480cc]/90 transition-colors duration-300">
               Schedule a Consultation
             </Button>
           </Link>
+        </div>
+      </section>
+
+      {/* Industry-specific Solutions */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium uppercase tracking-wider mb-4">
+              Industry Solutions
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#003366] mb-4">
+              Specialized Solutions by Industry
+            </h2>
+            <p className="text-gray-700 mb-0 text-lg">
+              Our deep industry expertise allows us to deliver customized solutions that address the unique challenges and opportunities in your sector.
+            </p>
+          </div>
+
+          {/* Real Estate */}
+          <div id="real-estate" className="py-10 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="md:w-1/3 mb-8 md:mb-0 pr-0 md:pr-12">
+                <div className="bg-gradient-to-br from-blue-900 to-blue-600 rounded-lg shadow-xl p-8 flex justify-center items-center aspect-square">
+                  <Building2 className="w-24 h-24 text-white opacity-80" />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-bold text-[#003366] mb-4">Real Estate Solutions</h3>
+                <p className="text-gray-700 mb-6">
+                  Empower your real estate business with scalable hosting for property listings, virtual tours, and AI-powered lead capture systems that work around the clock.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">99.9%+ uptime for property listings</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">AI lead generation and qualification</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Virtual tour hosting solutions</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Automated reporting systems</h4>
+                    </div>
+                  </div>
+                </div>
+                <Link href="/contact">
+                  <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
+                    Learn More about Real Estate Solutions
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Hospitality */}
+          <div id="hospitality" className="py-10 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row-reverse items-center">
+              <div className="md:w-1/3 mb-8 md:mb-0 pl-0 md:pl-12">
+                <div className="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg shadow-xl p-8 flex justify-center items-center aspect-square">
+                  <Hotel className="w-24 h-24 text-white opacity-80" />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-bold text-[#003366] mb-4">Hospitality Solutions</h3>
+                <p className="text-gray-700 mb-6">
+                  Enhance guest experiences and streamline operations with reliable booking engines, property management systems, and AI chatbots for 24/7 guest service.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Reliable hotel booking systems</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">WhatsApp chatbots for guest services</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">PMS integration and hosting</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Automated guest communications</h4>
+                    </div>
+                  </div>
+                </div>
+                <Link href="/contact">
+                  <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
+                    Discover Hospitality Solutions
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Food & Beverage */}
+          <div id="food-beverage" className="py-10 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="md:w-1/3 mb-8 md:mb-0 pr-0 md:pr-12">
+                <div className="bg-gradient-to-br from-green-700 to-green-500 rounded-lg shadow-xl p-8 flex justify-center items-center aspect-square">
+                  <UtensilsCrossed className="w-24 h-24 text-white opacity-80" />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-bold text-[#003366] mb-4">Food & Beverage Solutions</h3>
+                <p className="text-gray-700 mb-6">
+                  Serve your customers better with robust online ordering systems, inventory management automation, and AI-driven customer engagement tools.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Online ordering systems</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Inventory level automation</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">WhatsApp ordering bots</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Kitchen management systems</h4>
+                    </div>
+                  </div>
+                </div>
+                <Link href="/contact">
+                  <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
+                    Explore F&B Solutions
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* E-commerce */}
+          <div id="e-commerce" className="py-10 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row-reverse items-center">
+              <div className="md:w-1/3 mb-8 md:mb-0 pl-0 md:pl-12">
+                <div className="bg-gradient-to-br from-purple-700 to-purple-500 rounded-lg shadow-xl p-8 flex justify-center items-center aspect-square">
+                  <ShoppingBag className="w-24 h-24 text-white opacity-80" />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-bold text-[#003366] mb-4">E-commerce Solutions</h3>
+                <p className="text-gray-700 mb-6">
+                  Build your online retail presence on rock-solid infrastructure with AI-powered customer support, ensuring performance even during peak sales periods.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">High-performance store hosting</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">AI-powered customer support</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Order fulfillment automation</h4>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-6 w-6 text-[#2E8B57] mr-2 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold">Product recommendation engines</h4>
+                    </div>
+                  </div>
+                </div>
+                <Link href="/contact">
+                  <Button className="bg-[#3480cc] text-white hover:bg-[#3480cc]/90">
+                    Talk to an Expert
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Industries */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-10">
+            {/* Car Rental */}
+            <div id="car-rental" className="flex items-start p-6 rounded-lg border border-gray-200 bg-gray-50/50 hover:shadow-sm transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-[#003366] bg-opacity-10 flex items-center justify-center text-[#003366] flex-shrink-0 mr-5">
+                <Car className="h-7 w-7" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3">Car Rental Solutions</h3>
+                <p className="text-gray-600 mb-4">Comprehensive booking systems and fleet management solutions for car rental businesses.</p>
+                <Link href="/contact">
+                  <Button variant="outline" size="sm" className="text-[#003366] border-[#003366]">
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Travel Agencies */}
+            <div id="travel-agencies" className="flex items-start p-6 rounded-lg border border-gray-200 bg-gray-50/50 hover:shadow-sm transition-shadow">
+              <div className="w-14 h-14 rounded-full bg-[#003366] bg-opacity-10 flex items-center justify-center text-[#003366] flex-shrink-0 mr-5">
+                <Plane className="h-7 w-7" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3">Travel Agency Solutions</h3>
+                <p className="text-gray-600 mb-4">Reservation systems and AI travel planning assistants to enhance your travel agency services.</p>
+                <Link href="/contact">
+                  <Button variant="outline" size="sm" className="text-[#003366] border-[#003366]">
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

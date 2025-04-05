@@ -180,8 +180,8 @@ export function ComparisonTable() {
                   <p className="mt-2 text-sm text-gray-500 min-h-[50px]">{plan.description}</p>
                   
                   <Button 
-                    className={`mt-6 w-full ${plan.popular ? '' : 'bg-gray-800 hover:bg-gray-700'}`}
-                    variant={plan.popular ? 'default' : 'outline'}
+                    className={`mt-6 w-full ${plan.popular ? 'bg-[#3480cc] hover:bg-[#3480cc]/90 text-white' : 'bg-[#3480cc] hover:bg-[#3480cc]/90 text-white'}`}
+                    variant={plan.popular ? 'default' : 'default'}
                   >
                     {plan.buttonText}
                   </Button>
@@ -246,7 +246,7 @@ export function ComparisonTable() {
             Our team can help you choose the perfect solution for your business needs.
             Contact us for a personalized consultation and recommendations.
           </p>
-          <Button size="lg" className="px-8">
+          <Button size="lg" className="px-8 bg-[#3480cc] hover:bg-[#3480cc]/90 text-white">
             Schedule a Consultation
           </Button>
         </div>

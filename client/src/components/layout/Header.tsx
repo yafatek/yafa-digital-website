@@ -13,12 +13,12 @@ const navigation = [
     path: '/services',
     submenu: [
       { name: 'Cloud Infrastructure', path: '/services#cloud' },
+      { name: 'AI Solutions', path: '/ai-solutions' },
       { name: 'E-Commerce Solutions', path: '/services#ecommerce' },
-      { name: 'Business Intelligence', path: '/services#analytics' },
+      { name: 'Digital Marketing', path: '/services#marketing' },
       { name: 'Enterprise Security', path: '/services#security' }
     ]
   },
-  { name: 'Case Studies', path: '/case-studies' },
   { name: 'Pricing', path: '/pricing' },
   { name: 'Blog', path: '/blog' }
 ];
@@ -75,18 +75,18 @@ const Header = () => {
       <div className="hidden md:block bg-neutral-800 text-white py-2">
         <div className="container flex justify-between items-center">
           <div className="text-sm flex items-center space-x-4">
-            <a href="tel:+1234567890" className="flex items-center hover:text-neutral-300 transition-colors">
+            <a href="tel:+971565531542" className="flex items-center hover:text-neutral-300 transition-colors">
               <Phone className="h-3.5 w-3.5 mr-1.5" />
-              <span>(123) 456-7890</span>
+              <span>+971565531542</span>
             </a>
-            <a href="mailto:info@yafacloud.com" className="flex items-center hover:text-neutral-300 transition-colors">
+            <a href="mailto:admin@yafa.digital" className="flex items-center hover:text-neutral-300 transition-colors">
               <Mail className="h-3.5 w-3.5 mr-1.5" />
-              <span>info@yafacloud.com</span>
+              <span>admin@yafa.digital</span>
             </a>
           </div>
           <div className="text-sm">
             <span className="text-neutral-400 mr-3">Working Hours:</span>
-            <span>Monday - Friday: 9:00 AM - 6:00 PM EST</span>
+            <span>Monday - Friday: 10:00 AM - 7:00 PM GST</span>
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@ const Header = () => {
               <Link href="/case-studies">
                 <Button 
                   variant="outline" 
-                  className="border-primary/30 text-primary hover:bg-primary/5 hidden lg:inline-flex"
+                  className="border-[#3480cc] text-[#3480cc] hover:bg-[#3480cc]/5 hidden lg:inline-flex"
                   size="sm"
                 >
                   Case Studies
@@ -191,7 +191,7 @@ const Header = () => {
               </Link>
               <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="bg-primary text-white font-medium hover:bg-primary/90 transition-all"
+                  className="bg-[#3480cc] text-white font-medium hover:bg-[#3480cc]/90 transition-all"
                   size="sm"
                 >
                   Free Consultation
@@ -263,24 +263,24 @@ const Header = () => {
               {/* Mobile contact info */}
               <div className="pt-4 mt-4 border-t border-neutral-200">
                 <div className="space-y-3">
-                  <a href="tel:+1234567890" className="flex items-center text-neutral-700 hover:text-primary">
+                  <a href="tel:+971565531542" className="flex items-center text-neutral-700 hover:text-primary">
                     <Phone className="h-4 w-4 mr-2" />
-                    <span>(123) 456-7890</span>
+                    <span>+971565531542</span>
                   </a>
-                  <a href="mailto:info@yafacloud.com" className="flex items-center text-neutral-700 hover:text-primary">
+                  <a href="mailto:admin@yafa.digital" className="flex items-center text-neutral-700 hover:text-primary">
                     <Mail className="h-4 w-4 mr-2" />
-                    <span>info@yafacloud.com</span>
+                    <span>admin@yafa.digital</span>
                   </a>
                 </div>
                 <div className="mt-5">
                   <div className="grid grid-cols-2 gap-2">
                     <Link href="/case-studies">
-                      <Button variant="outline" className="w-full text-primary">
+                      <Button variant="outline" className="w-full text-[#3480cc] border-[#3480cc]">
                         Case Studies
                       </Button>
                     </Link>
                     <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full bg-primary text-white">
+                      <Button className="w-full bg-[#3480cc] text-white">
                         Free Consultation
                       </Button>
                     </a>

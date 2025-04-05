@@ -88,12 +88,12 @@ export function PricingCalculators() {
             <div className="bg-white p-5 rounded-lg text-center shadow-sm">
               <h4 className="font-semibold mb-2">Email Us</h4>
               <p className="text-sm text-gray-500 mb-2">Send us your requirements</p>
-              <p className="text-primary font-medium">sales@yafacloud.com</p>
+              <p className="text-primary font-medium">admin@yafa.digital</p>
             </div>
             <div className="bg-white p-5 rounded-lg text-center shadow-sm">
-              <h4 className="font-semibold mb-2">Call Us</h4>
+              <h4 className="font-semibold mb-2">Call Us / WhatsApp</h4>
               <p className="text-sm text-gray-500 mb-2">Speak with a specialist</p>
-              <p className="text-primary font-medium">+971 565531542</p>
+              <p className="text-primary font-medium">+971565531542</p>
             </div>
             <div className="bg-white p-5 rounded-lg text-center shadow-sm">
               <h4 className="font-semibold mb-2">Schedule a Meeting</h4>

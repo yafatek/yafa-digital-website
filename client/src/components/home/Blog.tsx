@@ -10,39 +10,39 @@ import aiDataImg from '../../assets/blog/ai-data.svg';
 import cybersecurityImg from '../../assets/blog/cybersecurity.svg';
 import cloudComputingImg from '../../assets/blog/cloud-computing.svg';
 
-const blogCategories = ['All', 'Cloud Computing', 'AI & Machine Learning', 'Cybersecurity', 'E-Commerce'];
+const blogCategories = ['All', 'Cloud Services', 'AI & Automation', 'Local Business', 'Industry Specific'];
 
 const blogPosts = [
   {
     id: 1,
-    title: 'The Future of Enterprise AI in Cloud Infrastructure',
-    category: 'AI & Machine Learning',
-    date: 'May 15, 2023',
-    readTime: '6 min read',
-    description: 'Explore how artificial intelligence is revolutionizing enterprise cloud infrastructure and creating new possibilities for large-scale business operations.',
-    href: '/blog/ai-cloud-computing',
+    title: 'Choosing AWS vs GCP vs Azure for Your Dubai Startup',
+    category: 'Cloud Services',
+    date: 'June 10, 2023',
+    readTime: '8 min read',
+    description: 'A comprehensive comparison of the top three cloud providers with specific insights for UAE-based startups looking to choose the right platform.',
+    href: '/blog/cloud-provider-comparison-uae',
     bgColor: 'bg-primary',
-    image: aiCloudImg
+    image: cloudComputingImg
   },
   {
     id: 2,
-    title: '5 Critical Cybersecurity Protocols for Enterprise Solutions',
-    category: 'Cybersecurity',
-    date: 'April 28, 2023',
-    readTime: '8 min read',
-    description: 'Protect your enterprise from sophisticated cyber threats with these essential security protocols every organization should implement immediately.',
-    href: '/blog/cybersecurity-best-practices',
+    title: 'How WhatsApp Chatbots Increase Hotel Bookings in the UAE',
+    category: 'Industry Specific',
+    date: 'May 22, 2023',
+    readTime: '6 min read',
+    description: 'Case studies and implementation strategies for hospitality businesses looking to leverage AI chatbots to increase bookings and improve guest experiences.',
+    href: '/blog/whatsapp-chatbots-hotel-industry-uae',
     bgColor: 'bg-corporate-accent',
-    image: cybersecurityImg
+    image: aiCloudImg
   },
   {
     id: 3,
-    title: 'How AI is Transforming Enterprise Data Management',
-    category: 'AI & Machine Learning',
-    date: 'April 10, 2023',
+    title: 'Reducing Food Waste in Dubai Restaurants with AI',
+    category: 'AI & Automation',
+    date: 'May 5, 2023',
     readTime: '5 min read',
-    description: 'Discover how AI-powered analytics, machine learning models, and intelligent automation are revolutionizing enterprise data management.',
-    href: '/blog/ai-data-transformation',
+    description: 'How F&B businesses in Dubai are using AI-powered inventory management and demand prediction to minimize waste and increase profitability.',
+    href: '/blog/ai-food-waste-reduction-dubai',
     bgColor: 'bg-corporate-dark',
     image: aiDataImg
   }
@@ -60,13 +60,13 @@ const Blog = () => {
       <div className="container">
         <AnimatedElement animation="fade" className="max-w-3xl mx-auto text-center mb-12">
           <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium uppercase tracking-wider mb-4">
-            Industry Insights
+            Insights & Resources
           </div>
           <h2 className="heading-lg mb-4">
-            Latest Resources & Expertise
+            UAE Business Technology Insights
           </h2>
           <p className="text-body-lg text-neutral-600 mx-auto">
-            Stay updated with the latest enterprise technology trends, best practices, and strategic insights from our industry experts.
+            Stay updated with the latest technology trends, best practices, and success stories specific to the UAE and MENA region business landscape.
           </p>
         </AnimatedElement>
         
@@ -152,76 +152,40 @@ const Blog = () => {
           ))}
         </div>
         
-        {/* Newsletter signup */}
-        <AnimatedElement animation="fade" delay="200" className="mt-16">
-          <div className="bg-white rounded-lg border border-neutral-200 shadow-sm p-8 md:p-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="heading-md mb-4">Get Enterprise Insights Delivered</h3>
-                <p className="text-neutral-600 mb-6">
-                  Subscribe to our newsletter for exclusive industry insights, technology trends, and strategic business recommendations.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <input 
-                    type="email" 
-                    placeholder="Your business email" 
-                    className="px-4 py-2.5 rounded border border-neutral-300 flex-grow"
-                    aria-label="Email subscription"
-                  />
-                  <Button className="bg-primary text-white font-medium whitespace-nowrap">
-                    Subscribe
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-                
-                <p className="text-neutral-400 text-xs mt-3">
-                  We respect your privacy. You can unsubscribe at any time.
-                </p>
-              </div>
-              
-              <div className="hidden md:block bg-neutral-50 rounded-lg p-6 border border-neutral-100">
-                <h4 className="heading-sm mb-3">Benefits for Subscribers</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start text-sm text-neutral-700">
-                    <div className="h-5 w-5 text-primary mt-0.5 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-full w-full">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </div>
-                    <span className="ml-2">Exclusive enterprise technology insights</span>
-                  </li>
-                  <li className="flex items-start text-sm text-neutral-700">
-                    <div className="h-5 w-5 text-primary mt-0.5 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-full w-full">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </div>
-                    <span className="ml-2">Early access to whitepapers and reports</span>
-                  </li>
-                  <li className="flex items-start text-sm text-neutral-700">
-                    <div className="h-5 w-5 text-primary mt-0.5 flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-full w-full">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    </div>
-                    <span className="ml-2">Invitations to industry webinars and events</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </AnimatedElement>
-        
-        {/* View all button */}
-        <div className="text-center mt-12">
+        {/* View more posts button */}
+        <div className="mt-12 text-center">
           <Link href="/blog">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium">
-              View All Resources
-              <ExternalLink className="ml-2 h-4 w-4" />
+            <Button variant="outline" className="group">
+              More Articles
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>
+        
+        {/* Newsletter signup */}
+        <AnimatedElement animation="fade" className="mt-16 bg-neutral-100 rounded-lg p-8 md:p-10 max-w-4xl mx-auto">
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+              <ExternalLink className="h-5 w-5" />
+            </div>
+            <h3 className="heading-md mb-2">Stay Updated on UAE Tech Trends</h3>
+            <p className="text-neutral-600 max-w-lg mx-auto">
+              Subscribe to our newsletter for the latest insights on cloud technology, AI innovations, and digital transformation in the UAE.
+            </p>
+          </div>
+          
+          <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-grow px-4 py-2.5 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              required
+            />
+            <Button type="submit" className="whitespace-nowrap">
+              Subscribe
+            </Button>
+          </form>
+        </AnimatedElement>
       </div>
     </section>
   );

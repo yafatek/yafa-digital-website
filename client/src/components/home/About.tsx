@@ -1,11 +1,24 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Check, Users, Globe, Headphones } from 'lucide-react';
+import { Check, Users, Globe, Database, Code, Languages, Cloud, Server, Map } from 'lucide-react';
+import { AnimatedElement } from '@/components/ui/animated-element';
 
 const About = () => {
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-4 md:px-6">
+        <AnimatedElement animation="fade" className="max-w-3xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium uppercase tracking-wider mb-4">
+            About Us
+          </div>
+          <h2 className="heading-lg mb-4">
+            Your Dedicated Technology Partner in the UAE
+          </h2>
+          <p className="text-body-lg text-neutral-600 mx-auto">
+            Based in Dubai, YAFA Cloud Services combines deep technical expertise with local understanding to deliver practical Cloud & AI solutions for UAE businesses.
+          </p>
+        </AnimatedElement>
+
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-12 md:mb-0 pr-0 md:pr-12">
             {/* Using a styled div instead of an actual image */}
@@ -19,53 +32,50 @@ const About = () => {
             </div>
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#003366] mb-6">About Yafa Cloud Services</h2>
-            <p className="text-gray-700 mb-6 text-lg">
-              Founded with a vision to make advanced cloud technology and AI solutions accessible to businesses of all sizes, Yafa Cloud Services LLC has quickly established itself as a trusted partner for digital transformation.
+            <h3 className="heading-md mb-5 text-neutral-900">Our Expertise & Advantage</h3>
+            <p className="text-neutral-700 mb-6">
+              YAFA Cloud Services LLC was founded with a mission to empower UAE SMBs with accessible, high-impact Cloud & AI solutions. With over 15 years of experience in Cloud/DevOps and 17+ years mastering Python, we deliver practical technology solutions that solve real business challenges.
             </p>
-            <p className="text-gray-700 mb-6 text-lg">
-              Our team of certified professionals brings together expertise in AWS cloud infrastructure, AI development, e-commerce solutions, and cybersecurity to deliver comprehensive services tailored to your unique business needs.
-            </p>
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-[#003366] bg-opacity-10 flex items-center justify-center text-[#003366] mr-4">
-                  <Check className="h-6 w-6" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-full bg-[#3480cc] flex items-center justify-center flex-shrink-0">
+                  <Cloud className="h-7 w-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold">AWS Certified</h3>
-                  <p className="text-sm text-gray-600">Official partner</p>
+                  <h4 className="font-bold text-lg mb-1">Multi-Cloud Expertise</h4>
+                  <p className="text-neutral-600">AWS, GCP, Azure</p>
                 </div>
               </div>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-[#2E8B57] bg-opacity-10 flex items-center justify-center text-[#2E8B57] mr-4">
-                  <Users className="h-6 w-6" />
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-full bg-[#3480cc] flex items-center justify-center flex-shrink-0">
+                  <Server className="h-7 w-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold">Expert Team</h3>
-                  <p className="text-sm text-gray-600">Experienced professionals</p>
+                  <h4 className="font-bold text-lg mb-1">End-to-End Capabilities</h4>
+                  <p className="text-neutral-600">Infrastructure to AI</p>
                 </div>
               </div>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-[#003366] bg-opacity-10 flex items-center justify-center text-[#003366] mr-4">
-                  <Globe className="h-6 w-6" />
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-full bg-[#3480cc] flex items-center justify-center flex-shrink-0">
+                  <Globe className="h-7 w-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold">Global Reach</h3>
-                  <p className="text-sm text-gray-600">Serving clients worldwide</p>
+                  <h4 className="font-bold text-lg mb-1">Regional Experience</h4>
+                  <p className="text-neutral-600">10+ years in MENA</p>
                 </div>
               </div>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-[#2E8B57] bg-opacity-10 flex items-center justify-center text-[#2E8B57] mr-4">
-                  <Headphones className="h-6 w-6" />
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-full bg-[#3480cc] flex items-center justify-center flex-shrink-0">
+                  <Languages className="h-7 w-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold">24/7 Support</h3>
-                  <p className="text-sm text-gray-600">Always available</p>
+                  <h4 className="font-bold text-lg mb-1">Multilingual Support</h4>
+                  <p className="text-neutral-600">Arabic, English, Turkish</p>
                 </div>
               </div>
             </div>
             <Link href="/about">
-              <Button className="bg-[#003366] text-white font-heading font-semibold hover:bg-opacity-90 transition-colors duration-300">
+              <Button className="bg-primary text-white font-medium hover:bg-primary/90 transition-colors duration-300">
                 Learn More About Us
               </Button>
             </Link>

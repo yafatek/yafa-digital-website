@@ -68,8 +68,8 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="bg-[#003366] text-white py-20">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Contact Us</h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-white">Contact Us</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto text-white">
             We'd love to hear from you. Reach out to discuss how we can help your business thrive.
           </p>
         </div>
@@ -87,32 +87,32 @@ const Contact = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-[#003366] bg-opacity-10 flex items-center justify-center text-[#003366] mr-4 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#3480cc] bg-opacity-10 flex items-center justify-center text-[#3480cc] mr-4 shrink-0">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg">Our Location</h3>
-                    <p className="text-gray-700">123 Business Avenue, Suite 100<br />New York, NY 10001</p>
+                    <p className="text-gray-700">Business Bay<br />Dubai, UAE</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-[#2E8B57] bg-opacity-10 flex items-center justify-center text-[#2E8B57] mr-4 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#3480cc] bg-opacity-10 flex items-center justify-center text-[#3480cc] mr-4 shrink-0">
                     <Mail className="h-6 w-6" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg">Email Us</h3>
-                    <p className="text-gray-700">contact@yafacloudservices.com<br />support@yafacloudservices.com</p>
+                    <p className="text-gray-700">admin@yafa.digital</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-[#003366] bg-opacity-10 flex items-center justify-center text-[#003366] mr-4 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#3480cc] bg-opacity-10 flex items-center justify-center text-[#3480cc] mr-4 shrink-0">
                     <Phone className="h-6 w-6" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-lg">Call Us</h3>
-                    <p className="text-gray-700">+1 (555) 123-4567<br />+1 (555) 987-6543</p>
+                    <h3 className="font-heading font-bold text-lg">Call Us / WhatsApp</h3>
+                    <p className="text-gray-700">+971565531542</p>
                   </div>
                 </div>
               </div>
@@ -120,16 +120,13 @@ const Contact = () => {
               <div className="mt-10">
                 <h3 className="font-heading font-bold text-lg mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
+                  <a href="http://linkedin.com/company/yafacs" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#3480cc] text-white flex items-center justify-center hover:bg-[#3480cc]/90 transition-colors duration-300">
                     <Linkedin className="h-5 w-5" />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
+                  <a href="https://www.facebook.com/YafaTek" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#3480cc] text-white flex items-center justify-center hover:bg-[#3480cc]/90 transition-colors duration-300">
                     <Facebook className="h-5 w-5" />
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center hover:bg-opacity-90 transition-colors duration-300">
+                  <a href="https://www.instagram.com/yafa_cs_official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#3480cc] text-white flex items-center justify-center hover:bg-[#3480cc]/90 transition-colors duration-300">
                     <Instagram className="h-5 w-5" />
                   </a>
                 </div>
@@ -231,7 +228,7 @@ const Contact = () => {
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-[#2E8B57] text-white font-heading font-semibold hover:bg-opacity-90 transition-colors duration-300"
+                    className="w-full bg-[#3480cc] text-white font-heading font-semibold hover:bg-[#3480cc]/90 transition-colors duration-300"
                     disabled={mutation.isPending}
                   >
                     {mutation.isPending ? 'Sending...' : 'Send Message'}
@@ -267,37 +264,15 @@ const Contact = () => {
           
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold font-heading text-[#003366] mb-4">New York Office</h3>
+              <h3 className="text-xl font-bold font-heading text-[#003366] mb-4">Working Hours</h3>
               <ul className="space-y-3">
                 <li className="flex justify-between">
                   <span className="font-medium">Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM EST</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="font-medium">Saturday</span>
-                  <span>10:00 AM - 4:00 PM EST</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="font-medium">Sunday</span>
-                  <span>Closed</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold font-heading text-[#003366] mb-4">Customer Support</h3>
-              <ul className="space-y-3">
-                <li className="flex justify-between">
-                  <span className="font-medium">Monday - Friday</span>
-                  <span>24 Hours</span>
+                  <span>10:00 AM - 7:00 PM GST</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="font-medium">Saturday - Sunday</span>
-                  <span>9:00 AM - 10:00 PM EST</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="font-medium">Holidays</span>
-                  <span>Limited Support</span>
+                  <span>Closed</span>
                 </li>
               </ul>
             </div>

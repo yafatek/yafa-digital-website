@@ -3,6 +3,16 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, BarChart3, Award, Zap, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+// Import customer logos
+import tunjaraLogo from '@/assets/customer-logos/tunjara.png';
+import orderqLogo from '@/assets/customer-logos/orderq_black_bg.png';
+import macmaniaLogo from '@/assets/customer-logos/macmania.png';
+import touchesLogo from '@/assets/customer-logos/touches.png';
+import gramiLogo from '@/assets/customer-logos/grami.png';
+import fyntrixLogo from '@/assets/customer-logos/fyntrix.png';
+import beanifyLogo from '@/assets/customer-logos/beanify.png';
+import medseaLogo from '@/assets/customer-logos/medsea.png';
+
 // UAE Brand Logo Components
 const EmiratesLogo = ({ className }: { className?: string }) => (
   <svg 
@@ -62,26 +72,26 @@ const Hero = () => {
           {/* Left column - Content */}
           <div>
             <div className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-white/90 bg-white/10 rounded-full mb-6">
-              ENTERPRISE SOLUTIONS
+              UAE CLOUD & AI SOLUTIONS
             </div>
             <h1 className="heading-xl mb-6 text-white">
-              Secure Enterprise Cloud Infrastructure for Global Business
+              Future-Proof Your Dubai Business: Advanced Cloud Infrastructure & AI Solutions by YAFA
             </h1>
             <p className="text-body-lg text-white/80 mb-8 max-w-xl">
-              Yafa Cloud Services delivers enterprise-grade infrastructure and AI solutions that enhance operational efficiency, drive innovation, and ensure security at scale.
+              Based in Dubai, YAFA Cloud Services LLC empowers Small and Medium Businesses across the UAE to achieve peak performance. We are your dedicated partner for designing, implementing, and managing robust Cloud Infrastructure (AWS, GCP, Azure, On-Prem & Edge) and developing transformative AI Solutions (Chatbots, Automation, Agents). With over 15 years of deep technical expertise, we deliver tangible results for diverse sectors including Real Estate, Hospitality, Food & Beverage, E-commerce, Car Rental, and Travel Agencies.
             </p>
             
-            {/* Key highlights */}
+            {/* Key service pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {[
-                { icon: Shield, text: "Enterprise-grade security compliance" },
-                { icon: Zap, text: "High-performance infrastructure" },
-                { icon: BarChart3, text: "Data-driven business intelligence" },
-                { icon: Award, text: "Industry-leading SLAs" }
+                { icon: Shield, text: "Rock-Solid Cloud Foundations: Scalable, secure, and cost-optimized infrastructure" },
+                { icon: Zap, text: "Intelligent AI Integration: Practical AI Chatbots, Agents, and Automation" },
+                { icon: BarChart3, text: "Custom Solutions & Edge Computing: Tailored infrastructure for your needs" },
+                { icon: Award, text: "Unmatched Technical Expertise: 15+ years of experience in the UAE" }
               ].map((feature, index) => (
                 <div key={index} className="highlight-item">
                   <div className="highlight-icon">
-                    <Check />
+                    <Check className="text-white" />
                   </div>
                   <span className="text-white/90 font-medium">
                     {feature.text}
@@ -92,9 +102,9 @@ const Hero = () => {
             
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <Link href="/services">
+              <Link href="/ai-solutions">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 transition-colors w-full sm:w-auto justify-center">
-                  Explore Solutions
+                  Explore AI Solutions
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -113,8 +123,8 @@ const Hero = () => {
               {/* Header with accent bar */}
               <div className="relative pt-6 px-6 pb-4">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-corporate-accent/80"></div>
-                <h3 className="text-lg font-semibold text-white">Enterprise Performance Metrics</h3>
-                <p className="text-sm text-white/60">Delivering measurable business impact</p>
+                <h3 className="text-lg font-semibold text-white">Why Partner with YAFA?</h3>
+                <p className="text-sm text-white/60">Our unique advantages for UAE businesses</p>
               </div>
               
               {/* Dashboard content */}
@@ -122,31 +132,31 @@ const Hero = () => {
                 {/* KPI metrics grid */}
                 <div className="grid grid-cols-2 gap-6 mb-6">
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">99.99%</div>
-                    <div className="text-sm text-white/70">Infrastructure Uptime</div>
+                    <div className="text-3xl font-bold text-white mb-1">15+</div>
+                    <div className="text-sm text-white/70">Years Cloud & DevOps</div>
                     <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[99.5%] bg-white rounded-full"></div>
+                      <div className="h-full w-[100%] bg-white rounded-full"></div>
                     </div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">47%</div>
-                    <div className="text-sm text-white/70">Average Cost Reduction</div>
+                    <div className="text-3xl font-bold text-white mb-1">17+</div>
+                    <div className="text-sm text-white/70">Years Python Expertise</div>
                     <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[47%] bg-white rounded-full"></div>
+                      <div className="h-full w-[100%] bg-white rounded-full"></div>
                     </div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">3.5x</div>
-                    <div className="text-sm text-white/70">Performance Increase</div>
+                    <div className="text-3xl font-bold text-white mb-1">3</div>
+                    <div className="text-sm text-white/70">Languages (AR/EN/TR)</div>
                     <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[85%] bg-white rounded-full"></div>
+                      <div className="h-full w-[100%] bg-white rounded-full"></div>
                     </div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">10x</div>
-                    <div className="text-sm text-white/70">ROI on AI Solutions</div>
+                    <div className="text-3xl font-bold text-white mb-1">10+</div>
+                    <div className="text-sm text-white/70">Years in MENA Region</div>
                     <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[95%] bg-white rounded-full"></div>
+                      <div className="h-full w-[100%] bg-white rounded-full"></div>
                     </div>
                   </div>
                 </div>
@@ -154,24 +164,24 @@ const Hero = () => {
                 {/* Company achievements */}
                 <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="text-sm font-medium text-white">Client satisfaction</div>
-                    <div className="text-sm font-medium text-white">98.7%</div>
+                    <div className="text-sm font-medium text-white">Industry Focus</div>
+                    <div className="text-sm font-medium text-white">6+ Sectors</div>
                   </div>
                   
                   <div className="flex flex-col sm:flex-row justify-between text-center gap-4">
                     <div>
-                      <div className="text-sm text-white/70 mb-1">Years of Experience</div>
-                      <div className="text-2xl font-bold text-white">15+</div>
+                      <div className="text-sm text-white/70 mb-1">Real Estate</div>
+                      <div className="text-2xl font-bold text-white">✓</div>
                     </div>
                     <div className="w-px bg-white/10 hidden sm:block"></div>
                     <div>
-                      <div className="text-sm text-white/70 mb-1">Enterprise Clients</div>
-                      <div className="text-2xl font-bold text-white">250+</div>
+                      <div className="text-sm text-white/70 mb-1">Hospitality</div>
+                      <div className="text-2xl font-bold text-white">✓</div>
                     </div>
                     <div className="w-px bg-white/10 hidden sm:block"></div>
                     <div>
-                      <div className="text-sm text-white/70 mb-1">Cloud Solutions</div>
-                      <div className="text-2xl font-bold text-white">500+</div>
+                      <div className="text-sm text-white/70 mb-1">E-commerce</div>
+                      <div className="text-2xl font-bold text-white">✓</div>
                     </div>
                   </div>
                 </div>
@@ -182,22 +192,42 @@ const Hero = () => {
         
         {/* Enterprise credibility section */}
         <div className="mt-16 py-5 px-6 bg-white/5 backdrop-blur-sm rounded-lg hidden md:block">
-          <div className="grid grid-cols-6 gap-6 items-center">
-            <div className="col-span-2 text-sm text-white/80">
-              <span className="font-medium">Trusted by industry leaders</span>
+          <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-6 gap-6 items-center">
+              <div className="col-span-1 text-sm text-white/80">
+                <span className="font-medium">Trusted by</span>
+              </div>
+              <div className="col-span-5 flex justify-between items-center">
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={tunjaraLogo} alt="Tunjara" className="h-full object-contain" />
+                </div>
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={orderqLogo} alt="OrderQ" className="h-full object-contain" />
+                </div>
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={macmaniaLogo} alt="MacMania" className="h-full object-contain" />
+                </div>
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={touchesLogo} alt="Touches" className="h-full object-contain" />
+                </div>
+              </div>
             </div>
-            <div className="col-span-4 flex justify-between items-center">
-              <div title="Emirates">
-                <EmiratesLogo className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div title="Etisalat">
-                <EtisalatLogo className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div title="ADNOC">
-                <ADNOCLogo className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div title="Emaar">
-                <EmaarLogo className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300" />
+            
+            <div className="grid grid-cols-6 gap-6 items-center">
+              <div className="col-span-1"></div>
+              <div className="col-span-5 flex justify-between items-center">
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={gramiLogo} alt="GRAMI" className="h-full object-contain" />
+                </div>
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={fyntrixLogo} alt="Fyntrix" className="h-full object-contain" />
+                </div>
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={beanifyLogo} alt="Beanify" className="h-full object-contain" />
+                </div>
+                <div className="flex items-center justify-center h-12 w-24">
+                  <img src={medseaLogo} alt="Med Sea 1888" className="h-full object-contain" />
+                </div>
               </div>
             </div>
           </div>

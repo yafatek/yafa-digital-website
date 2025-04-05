@@ -454,18 +454,26 @@ export function PriceCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Button 
                 variant={tier === 'startup' ? 'default' : 'outline'} 
-                className="h-auto py-3 justify-start"
+                className={`h-auto py-3 justify-start ${
+                  tier === 'startup' 
+                    ? 'bg-[#3480cc] hover:bg-[#3480cc]/90 text-white' 
+                    : 'border-[#3480cc] text-[#3480cc] hover:bg-[#3480cc]/10'
+                }`}
                 onClick={() => setTier('startup')}
               >
                 <div className="flex flex-col items-start text-left">
                   <span className="font-semibold">Startup</span>
-                  <span className="text-xs mt-1 text-muted-foreground">Pay-as-you-go pricing</span>
+                  <span className={`text-xs mt-1 ${tier === 'startup' ? 'text-white/80' : 'text-muted-foreground'}`}>Pay-as-you-go pricing</span>
                 </div>
               </Button>
               
               <Button 
                 variant={tier === 'business' ? 'default' : 'outline'} 
-                className="h-auto py-3 justify-start relative"
+                className={`h-auto py-3 justify-start relative ${
+                  tier === 'business' 
+                    ? 'bg-[#3480cc] hover:bg-[#3480cc]/90 text-white' 
+                    : 'border-[#3480cc] text-[#3480cc] hover:bg-[#3480cc]/10'
+                }`}
                 onClick={() => setTier('business')}
               >
                 <div className="absolute -top-2 -right-2 bg-green-600 text-white text-xs px-2 py-0.5 rounded-full">
@@ -473,18 +481,22 @@ export function PriceCalculator() {
                 </div>
                 <div className="flex flex-col items-start text-left">
                   <span className="font-semibold">Business</span>
-                  <span className="text-xs mt-1 text-muted-foreground">10% discount on all services</span>
+                  <span className={`text-xs mt-1 ${tier === 'business' ? 'text-white/80' : 'text-muted-foreground'}`}>10% discount on all services</span>
                 </div>
               </Button>
               
               <Button 
                 variant={tier === 'enterprise' ? 'default' : 'outline'} 
-                className="h-auto py-3 justify-start"
+                className={`h-auto py-3 justify-start ${
+                  tier === 'enterprise' 
+                    ? 'bg-[#3480cc] hover:bg-[#3480cc]/90 text-white' 
+                    : 'border-[#3480cc] text-[#3480cc] hover:bg-[#3480cc]/10'
+                }`}
                 onClick={() => setTier('enterprise')}
               >
                 <div className="flex flex-col items-start text-left">
                   <span className="font-semibold">Enterprise</span>
-                  <span className="text-xs mt-1 text-muted-foreground">20% discount + priority support</span>
+                  <span className={`text-xs mt-1 ${tier === 'enterprise' ? 'text-white/80' : 'text-muted-foreground'}`}>20% discount + priority support</span>
                 </div>
               </Button>
             </div>
@@ -529,7 +541,7 @@ export function PriceCalculator() {
                 </div>
                 
                 <div className="mt-6">
-                  <Button className="w-full flex items-center gap-2">
+                  <Button className="w-full flex items-center gap-2 bg-[#3480cc] hover:bg-[#3480cc]/90 text-white">
                     Get Custom Quote <ArrowRight className="h-4 w-4" />
                   </Button>
                   <p className="text-xs text-center mt-2 text-gray-500">

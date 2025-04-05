@@ -8,6 +8,26 @@ import aiSvg from '../../assets/case-studies/ai.svg';
 import securitySvg from '../../assets/case-studies/security.svg';
 import cloudSvg from '../../assets/case-studies/cloud.svg';
 
+// Helper function to handle case study link clicks
+const handleCaseStudyClick = (e, href) => {
+  // If it's a hash link to the case studies page
+  if (href.startsWith('/case-studies#')) {
+    e.preventDefault();
+    const hash = href.split('#')[1];
+    window.location.href = `/case-studies#${hash}`;
+  }
+};
+
+// Handle view all case studies click
+const handleViewAllClick = (e) => {
+  e.preventDefault();
+  window.location.href = '/case-studies';
+  // This ensures we go to the top of the page
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 100);
+};
+
 const caseStudies = [
   {
     id: 1,
@@ -15,7 +35,7 @@ const caseStudies = [
     category: 'E-Commerce',
     client: 'RetailPlus',
     description: 'We helped RetailPlus migrate their e-commerce platform to AWS cloud and implemented AI-driven inventory management, resulting in a 35% increase in sales.',
-    href: '/case-studies/retailplus',
+    href: '/case-studies#retailplus',
     bgColor: 'bg-primary'
   },
   {
@@ -24,7 +44,7 @@ const caseStudies = [
     category: 'AI Solutions',
     client: 'ServiceNow Inc.',
     description: 'Developed and deployed a multilingual AI chatbot for ServiceNow Inc., reducing customer service costs by 40% and improving response times by 75%.',
-    href: '/case-studies/servicenow',
+    href: '/case-studies#servicenow',
     bgColor: 'bg-corporate-accent'
   },
   {
@@ -33,7 +53,7 @@ const caseStudies = [
     category: 'Cybersecurity',
     client: 'FinSecure Bank',
     description: 'Implemented comprehensive cybersecurity solutions for FinSecure Bank, preventing potential data breaches and ensuring compliance with financial regulations.',
-    href: '/case-studies/finsecure',
+    href: '/case-studies#finsecure',
     bgColor: 'bg-corporate-dark'
   }
 ];
@@ -97,7 +117,7 @@ const CaseStudies = () => {
                   {study.description}
                 </p>
                 <div className="mt-auto">
-                  <Link href={study.href}>
+                  <Link href={study.href} onClick={(e) => handleCaseStudyClick(e, study.href)}>
                     <span className="inline-flex items-center text-primary font-medium cursor-pointer hover:underline group">
                       Read case study 
                       <ArrowRight className="inline h-4 w-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
@@ -110,7 +130,7 @@ const CaseStudies = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link href="/case-studies">
+          <Link href="/case-studies" onClick={handleViewAllClick}>
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium">
               View All Case Studies
               <ExternalLink className="ml-2 h-4 w-4" />
