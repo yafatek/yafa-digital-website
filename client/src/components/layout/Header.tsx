@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import yafaLogoDark from '../../assets/yafa-logo-dark.png';
 import yafaLogoLight from '../../assets/yafa-logo-light.png';
@@ -71,32 +71,11 @@ const Header = () => {
 
   return (
     <>
-      {/* Top utility bar */}
-      <div className="hidden md:block bg-neutral-800 text-white py-2">
-        <div className="container flex justify-between items-center">
-          <div className="text-sm flex items-center space-x-4">
-            <a href="tel:+971565531542" className="flex items-center hover:text-neutral-300 transition-colors">
-              <Phone className="h-3.5 w-3.5 mr-1.5" />
-              <span>+971565531542</span>
-            </a>
-            <a href="mailto:admin@yafa.digital" className="flex items-center hover:text-neutral-300 transition-colors">
-              <Mail className="h-3.5 w-3.5 mr-1.5" />
-              <span>admin@yafa.digital</span>
-            </a>
-          </div>
-          <div className="text-sm">
-            <span className="text-neutral-400 mr-3">Working Hours:</span>
-            <span>Monday - Friday: 10:00 AM - 7:00 PM GST</span>
-          </div>
-        </div>
-      </div>
-    
-      {/* Main header */}
       <header 
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        className={`sticky top-0 z-50 w-full transition-all duration-200 backdrop-blur-lg ${
           isScrolled 
-            ? 'bg-white shadow-md py-3' 
-            : 'bg-white py-5'
+            ? 'bg-white/90 shadow-sm py-3' 
+            : 'bg-white/80 py-4'
         }`}
       >
         <div className="container flex justify-between items-center">
@@ -104,9 +83,9 @@ const Header = () => {
           <div className="flex items-center">
             <Link href="/">
               <img 
-                src={isScrolled ? yafaLogoDark : yafaLogoDark} 
+                src={yafaLogoDark} 
                 alt="Yafa Cloud Services" 
-                className="h-9 md:h-10 cursor-pointer transition-all"
+                className="h-8 md:h-9 cursor-pointer transition-all"
               />
             </Link>
           </div>
@@ -115,7 +94,7 @@ const Header = () => {
           <div className="flex md:hidden">
             <Button 
               variant="ghost" 
-              className="text-neutral-700" 
+              className="text-neutral-700 hover:bg-neutral-100 rounded-full" 
               onClick={toggleMobileMenu}
               size="sm"
             >
@@ -136,25 +115,27 @@ const Header = () => {
                   {item.submenu ? (
                     <div>
                       <button 
-                        className={`nav-item px-4 py-2 flex items-center ${
-                          isActive(item.path) || activeSubmenu === item.name ? 'text-primary' : ''
-                        }`}
+                        className={`relative px-3 py-2 mx-1 text-sm font-medium rounded-full transition-colors ${
+                          isActive(item.path) || activeSubmenu === item.name 
+                            ? 'text-neutral-900 bg-neutral-100' 
+                            : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
+                        } flex items-center`}
                         onClick={() => toggleSubmenu(item.name)}
                       >
                         {item.name}
-                        <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${
+                        <ChevronDown className={`ml-1 h-3.5 w-3.5 transition-transform ${
                           activeSubmenu === item.name ? 'rotate-180' : ''
                         }`} />
                       </button>
                       
                       {/* Dropdown */}
                       {activeSubmenu === item.name && (
-                        <div className="absolute left-0 mt-1 w-56 bg-white rounded-md shadow-lg border border-neutral-200 overflow-hidden z-20">
+                        <div className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-neutral-200/50 overflow-hidden z-20 backdrop-blur-xl">
                           <div className="py-1">
                             {item.submenu.map((subitem) => (
                               <Link key={subitem.path} href={subitem.path}>
                                 <span 
-                                  className="block px-4 py-2 text-neutral-700 hover:bg-neutral-50 hover:text-primary transition-colors cursor-pointer text-sm"
+                                  className="block px-4 py-2.5 text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 transition-colors cursor-pointer text-sm"
                                   onClick={() => setActiveSubmenu(null)}
                                 >
                                   {subitem.name}
@@ -167,8 +148,10 @@ const Header = () => {
                     </div>
                   ) : (
                     <Link href={item.path}>
-                      <span className={`nav-item px-4 py-2 block ${
-                        isActive(item.path) ? 'text-primary after:bg-primary' : ''
+                      <span className={`relative block px-3 py-2 mx-1 text-sm font-medium rounded-full transition-colors ${
+                        isActive(item.path) 
+                          ? 'text-neutral-900 bg-neutral-100' 
+                          : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
                       }`}>
                         {item.name}
                       </span>
@@ -178,12 +161,24 @@ const Header = () => {
               ))}
             </div>
             
+            {/* Search button */}
+            <div className="ml-2 mr-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 rounded-full h-9 w-9 p-0"
+              >
+                <Search className="h-4 w-4" />
+                <span className="sr-only">Search</span>
+              </Button>
+            </div>
+            
             {/* CTA buttons */}
             <div className="flex items-center space-x-3">
               <Link href="/case-studies">
                 <Button 
                   variant="outline" 
-                  className="border-[#3480cc] text-[#3480cc] hover:bg-[#3480cc]/5 hidden lg:inline-flex"
+                  className="rounded-full border-neutral-200 text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300 hidden lg:inline-flex"
                   size="sm"
                 >
                   Case Studies
@@ -191,10 +186,11 @@ const Header = () => {
               </Link>
               <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="bg-[#3480cc] text-white font-medium hover:bg-[#3480cc]/90 transition-all"
+                  className="bg-primary hover:bg-primary/90 text-white font-medium transition-all rounded-full shadow-sm hover:shadow"
                   size="sm"
                 >
                   Free Consultation
+                  <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
                 </Button>
               </a>
             </div>
@@ -203,53 +199,58 @@ const Header = () => {
         
         {/* Mobile Navigation */}
         <div 
-          className={`md:hidden absolute left-0 right-0 bg-white border-b border-neutral-200 shadow-md transition-all duration-300 z-40 ${
-            isMobileMenuOpen ? 'max-h-[70vh] opacity-100' : 'max-h-0 opacity-0 overflow-hidden pointer-events-none'
+          className={`md:hidden fixed inset-0 bg-white/95 backdrop-blur-xl transition-all duration-300 z-40 pt-20 ${
+            isMobileMenuOpen 
+              ? 'opacity-100 pointer-events-auto' 
+              : 'opacity-0 pointer-events-none transform translate-x-full'
           }`}
         >
-          <div className="container py-4 overflow-y-auto max-h-[70vh]">
-            <nav className="flex flex-col space-y-1">
+          <div className="container py-4 overflow-y-auto max-h-screen">
+            <nav className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <div key={item.name} className="relative">
                   {item.submenu ? (
-                    <div>
+                    <div className="rounded-xl overflow-hidden">
                       <button 
-                        className={`w-full text-left px-3 py-2.5 rounded-md flex items-center justify-between ${
+                        className={`w-full text-left px-5 py-3.5 flex items-center justify-between text-lg font-medium ${
                           isActive(item.path) || activeSubmenu === item.name 
-                            ? 'bg-primary/5 text-primary font-medium' 
-                            : 'text-neutral-800 hover:bg-neutral-50'
+                            ? 'bg-neutral-100 text-neutral-900' 
+                            : 'text-neutral-700 hover:bg-neutral-50'
                         }`}
                         onClick={() => toggleSubmenu(item.name)}
                       >
                         {item.name}
-                        <ChevronDown className={`h-4 w-4 transition-transform ${
+                        <ChevronDown className={`h-5 w-5 transition-transform ${
                           activeSubmenu === item.name ? 'rotate-180' : ''
                         }`} />
                       </button>
                       
                       {/* Mobile submenu */}
-                      <div className={`pl-4 mt-1 mb-1 overflow-hidden transition-all duration-200 ${
-                        activeSubmenu === item.name ? 'max-h-60' : 'max-h-0'
-                      }`}>
-                        {item.submenu.map((subitem) => (
-                          <Link key={subitem.path} href={subitem.path}>
-                            <span 
-                              className="block px-3 py-2 text-neutral-700 hover:text-primary rounded-md text-sm transition-colors cursor-pointer"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {subitem.name}
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
+                      {activeSubmenu === item.name && (
+                        <div className="pl-5 pb-2 bg-neutral-50">
+                          {item.submenu.map((subitem) => (
+                            <Link key={subitem.path} href={subitem.path}>
+                              <span 
+                                className="block px-5 py-3 text-neutral-700 hover:text-neutral-900"
+                                onClick={() => {
+                                  setActiveSubmenu(null);
+                                  setIsMobileMenuOpen(false);
+                                }}
+                              >
+                                {subitem.name}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <Link href={item.path}>
                       <span 
-                        className={`block px-3 py-2.5 rounded-md ${
+                        className={`block px-5 py-3.5 text-lg font-medium rounded-xl ${
                           isActive(item.path) 
-                            ? 'bg-primary/5 text-primary font-medium' 
-                            : 'text-neutral-800 hover:bg-neutral-50'
+                            ? 'bg-neutral-100 text-neutral-900' 
+                            : 'text-neutral-700 hover:bg-neutral-50'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
@@ -259,38 +260,32 @@ const Header = () => {
                   )}
                 </div>
               ))}
-
-              {/* Mobile contact info */}
-              <div className="pt-4 mt-4 border-t border-neutral-200">
-                <div className="space-y-3">
-                  <a href="tel:+971565531542" className="flex items-center text-neutral-700 hover:text-primary">
-                    <Phone className="h-4 w-4 mr-2" />
-                    <span>+971565531542</span>
-                  </a>
-                  <a href="mailto:admin@yafa.digital" className="flex items-center text-neutral-700 hover:text-primary">
-                    <Mail className="h-4 w-4 mr-2" />
-                    <span>admin@yafa.digital</span>
-                  </a>
-                </div>
-                <div className="mt-5">
-                  <div className="grid grid-cols-2 gap-2">
-                    <Link href="/case-studies">
-                      <Button variant="outline" className="w-full text-[#3480cc] border-[#3480cc]">
-                        Case Studies
-                      </Button>
-                    </Link>
-                    <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full bg-[#3480cc] text-white">
-                        Free Consultation
-                      </Button>
-                    </a>
-                  </div>
-                </div>
+              
+              {/* Mobile menu CTA */}
+              <div className="pt-8 pb-4">
+                <Link href="/case-studies">
+                  <Button 
+                    variant="outline" 
+                    className="rounded-xl bg-neutral-50 border-neutral-200 text-neutral-800 w-full mb-3 h-14 text-base font-medium"
+                  >
+                    Browse Case Studies
+                  </Button>
+                </Link>
+                <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    className="rounded-xl bg-primary hover:bg-primary/90 text-white w-full h-14 text-base font-medium shadow-sm"
+                  >
+                    Book Free Consultation
+                  </Button>
+                </a>
               </div>
             </nav>
           </div>
         </div>
       </header>
+      
+      {/* Spacer when mobile menu is open */}
+      {isMobileMenuOpen && <div className="h-screen md:hidden" />}
     </>
   );
 };

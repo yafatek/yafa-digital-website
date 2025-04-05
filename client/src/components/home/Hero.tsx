@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, BarChart3, Award, Zap, Check } from 'lucide-react';
+import { ArrowRight, Shield, BarChart3, Award, Zap, Check, ChevronRight, Globe, Server, Bot } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Import customer logos
@@ -62,174 +62,136 @@ const EmaarLogo = ({ className }: { className?: string }) => (
 
 const Hero = () => {
   return (
-    <section className="corporate-gradient text-white relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-28">
-      {/* Background pattern */}
-      <div className="absolute inset-0 hero-pattern opacity-10"></div>
+    <section className="bg-gradient-to-b from-[#f5f5f7] to-white relative overflow-hidden pt-20 pb-28">
+      {/* Background subtle patterns and decoration */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNjAgMEgwVjYwSDYwVjBaIiBmaWxsPSIjMDAwMDAwIi8+PC9zdmc+')]"></div>
+      <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-primary/10 blur-3xl opacity-30"></div>
+      <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-sky-500/10 blur-3xl opacity-30"></div>
       
-      {/* Main content */}
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center">
-          {/* Left column - Content */}
-          <div>
-            <div className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-white/90 bg-white/10 rounded-full mb-6">
-              UAE CLOUD & AI SOLUTIONS
-            </div>
-            <h1 className="heading-xl mb-6 text-white">
-              Future-Proof Your Dubai Business: Advanced Cloud Infrastructure & AI Solutions by YAFA
-            </h1>
-            <p className="text-body-lg text-white/80 mb-8 max-w-xl">
-              Based in Dubai, YAFA Cloud Services LLC empowers Small and Medium Businesses across the UAE to achieve peak performance. We are your dedicated partner for designing, implementing, and managing robust Cloud Infrastructure (AWS, GCP, Azure, On-Prem & Edge) and developing transformative AI Solutions (Chatbots, Automation, Agents). With over 15 years of deep technical expertise, we deliver tangible results for diverse sectors including Real Estate, Hospitality, Food & Beverage, E-commerce, Car Rental, and Travel Agencies.
-            </p>
-            
-            {/* Key service pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {[
-                { icon: Shield, text: "Rock-Solid Cloud Foundations: Scalable, secure, and cost-optimized infrastructure" },
-                { icon: Zap, text: "Intelligent AI Integration: Practical AI Chatbots, Agents, and Automation" },
-                { icon: BarChart3, text: "Custom Solutions & Edge Computing: Tailored infrastructure for your needs" },
-                { icon: Award, text: "Unmatched Technical Expertise: 15+ years of experience in the UAE" }
-              ].map((feature, index) => (
-                <div key={index} className="highlight-item">
-                  <div className="highlight-icon">
-                    <Check className="text-white" />
-                  </div>
-                  <span className="text-white/90 font-medium">
-                    {feature.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-            
-            {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <Link href="/ai-solutions">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 transition-colors w-full sm:w-auto justify-center">
-                  Explore AI Solutions
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="border-white/30 text-white bg-white/5 hover:bg-white/15 transition-colors w-full sm:w-auto justify-center">
-                  Book Free Consultation
-                  <span className="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded">Calendly →</span>
-                </Button>
-              </a>
-            </div>
-          </div>
-          
-          {/* Right column - Enterprise metrics dashboard */}
-          <div className="lg:justify-self-end w-full max-w-xl">
-            <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-lg overflow-hidden shadow-lg">
-              {/* Header with accent bar */}
-              <div className="relative pt-6 px-6 pb-4">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/80 to-corporate-accent/80"></div>
-                <h3 className="text-lg font-semibold text-white">Why Partner with YAFA?</h3>
-                <p className="text-sm text-white/60">Our unique advantages for UAE businesses</p>
-              </div>
-              
-              {/* Dashboard content */}
-              <div className="px-6 pb-6">
-                {/* KPI metrics grid */}
-                <div className="grid grid-cols-2 gap-6 mb-6">
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">15+</div>
-                    <div className="text-sm text-white/70">Years Cloud & DevOps</div>
-                    <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[100%] bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">17+</div>
-                    <div className="text-sm text-white/70">Years Python Expertise</div>
-                    <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[100%] bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">3</div>
-                    <div className="text-sm text-white/70">Languages (AR/EN/TR)</div>
-                    <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[100%] bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-3xl font-bold text-white mb-1">10+</div>
-                    <div className="text-sm text-white/70">Years in MENA Region</div>
-                    <div className="mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-[100%] bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Company achievements */}
-                <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-sm font-medium text-white">Industry Focus</div>
-                    <div className="text-sm font-medium text-white">6+ Sectors</div>
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row justify-between text-center gap-4">
-                    <div>
-                      <div className="text-sm text-white/70 mb-1">Real Estate</div>
-                      <div className="text-2xl font-bold text-white">✓</div>
-                    </div>
-                    <div className="w-px bg-white/10 hidden sm:block"></div>
-                    <div>
-                      <div className="text-sm text-white/70 mb-1">Hospitality</div>
-                      <div className="text-2xl font-bold text-white">✓</div>
-                    </div>
-                    <div className="w-px bg-white/10 hidden sm:block"></div>
-                    <div>
-                      <div className="text-sm text-white/70 mb-1">E-commerce</div>
-                      <div className="text-2xl font-bold text-white">✓</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className="container relative">
+        {/* Eyebrow announcement */}
+        <div className="w-fit mx-auto mb-8 relative">
+          <div className="bg-primary/5 backdrop-blur-lg border border-primary/10 rounded-full px-5 py-1.5 flex items-center gap-2">
+            <span className="text-primary/90 font-medium text-sm">Now serving Dubai and the wider UAE</span>
+            <div className="bg-primary/10 rounded-full p-0.5">
+              <ChevronRight className="w-3 h-3 text-primary" />
             </div>
           </div>
         </div>
         
-        {/* Enterprise credibility section */}
-        <div className="mt-16 py-5 px-6 bg-white/5 backdrop-blur-sm rounded-lg hidden md:block">
-          <div className="flex flex-col gap-6">
-            <div className="grid grid-cols-6 gap-6 items-center">
-              <div className="col-span-1 text-sm text-white/80">
-                <span className="font-medium">Trusted by</span>
-              </div>
-              <div className="col-span-5 flex justify-between items-center">
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={tunjaraLogo} alt="Tunjara" className="h-full object-contain" />
+        {/* Main headline - Apple style large centered heading */}
+        <div className="text-center mx-auto max-w-4xl">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-medium text-neutral-900 tracking-tight mb-5 leading-[1.05]">
+            Cloud Infrastructure & AI Solutions for Dubai Businesses
+          </h1>
+          <p className="text-neutral-600 text-lg md:text-xl font-light max-w-3xl mx-auto leading-relaxed mb-8">
+            YAFA delivers enterprise-grade cloud infrastructure and intelligent AI solutions that help Dubai businesses operate at peak performance.
+          </p>
+          
+          {/* Primary CTAs with clean design */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
+            <Link href="/ai-solutions">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white border-0 shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/20 w-full sm:w-auto px-8">
+                Explore AI Solutions
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
+            <a href="https://calendly.com/ferasawadi90/30min" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="border-neutral-200 hover:border-neutral-300 bg-white text-neutral-800 w-full sm:w-auto px-8">
+                Book Free Consultation
+              </Button>
+            </a>
+          </div>
+        </div>
+        
+        {/* Premium service pillars - Stripe style cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+          {[
+            {
+              icon: Server,
+              title: "Cloud Infrastructure",
+              description: "Robust, scalable cloud solutions optimized for UAE businesses, with local expertise.",
+              color: "from-blue-50 to-blue-100/50",
+              iconColor: "text-blue-500"
+            },
+            {
+              icon: Bot,
+              title: "AI Solutions",
+              description: "Practical AI chatbots, agents, and automation tailored for Dubai's business needs.",
+              color: "from-violet-50 to-violet-100/50",
+              iconColor: "text-violet-500"
+            },
+            {
+              icon: Globe,
+              title: "Dubai Expertise",
+              description: "15+ years of technical experience serving UAE's diverse business landscape.",
+              color: "from-amber-50 to-amber-100/50",
+              iconColor: "text-amber-500"
+            }
+          ].map((service, index) => (
+            <div key={index} className="group hover:scale-[1.02] transition-all duration-300">
+              <div className={`bg-gradient-to-b ${service.color} p-6 md:p-8 rounded-2xl border border-neutral-200/80 h-full hover:shadow-lg hover:border-neutral-300/80 transition-all duration-300`}>
+                <div className={`w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm mb-5 ${service.iconColor}`}>
+                  <service.icon className="w-6 h-6" />
                 </div>
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={orderqLogo} alt="OrderQ" className="h-full object-contain" />
-                </div>
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={macmaniaLogo} alt="MacMania" className="h-full object-contain" />
-                </div>
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={touchesLogo} alt="Touches" className="h-full object-contain" />
-                </div>
+                <h3 className="text-xl font-medium text-neutral-900 mb-3">{service.title}</h3>
+                <p className="text-neutral-600">{service.description}</p>
               </div>
             </div>
-            
-            <div className="grid grid-cols-6 gap-6 items-center">
-              <div className="col-span-1"></div>
-              <div className="col-span-5 flex justify-between items-center">
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={gramiLogo} alt="GRAMI" className="h-full object-contain" />
-                </div>
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={fyntrixLogo} alt="Fyntrix" className="h-full object-contain" />
-                </div>
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={beanifyLogo} alt="Beanify" className="h-full object-contain" />
-                </div>
-                <div className="flex items-center justify-center h-12 w-24">
-                  <img src={medseaLogo} alt="Med Sea 1888" className="h-full object-contain" />
+          ))}
+        </div>
+        
+        {/* Social proof - Brand bar with clean design */}
+        <div className="bg-neutral-50/50 backdrop-blur-sm border border-neutral-200/50 rounded-xl p-8 shadow-sm">
+          <div className="text-center mb-6">
+            <span className="text-neutral-500 text-sm font-medium uppercase tracking-wide">Trusted by Dubai's Leading Businesses</span>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="flex items-center justify-center h-14">
+              <img src={tunjaraLogo} alt="Tunjara" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-center justify-center h-14">
+              <img src={orderqLogo} alt="OrderQ" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-center justify-center h-14">
+              <img src={macmaniaLogo} alt="MacMania" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-center justify-center h-14">
+              <img src={touchesLogo} alt="Touches" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-6">
+            <div className="flex items-center justify-center h-14">
+              <img src={gramiLogo} alt="GRAMI" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-center justify-center h-14">
+              <img src={fyntrixLogo} alt="Fyntrix" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-center justify-center h-14">
+              <img src={beanifyLogo} alt="Beanify" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-center justify-center h-14 bg-blue-600 p-2 rounded-lg">
+              <img src={medseaLogo} alt="Med Sea 1888" className="h-full max-h-full w-auto object-contain opacity-100 hover:opacity-90 transition-opacity" />
+            </div>
+          </div>
+          
+          {/* Key metrics - Apple card design */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+            {[
+              { value: "15+", label: "Years Cloud & DevOps" },
+              { value: "17+", label: "Years Python Expertise" },
+              { value: "3", label: "Languages (AR/EN/TR)" },
+              { value: "10+", label: "Years in MENA Region" }
+            ].map((metric, index) => (
+              <div key={index} className="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm">
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-3xl font-bold text-neutral-900 mb-1">{metric.value}</span>
+                  <span className="text-sm text-neutral-500">{metric.label}</span>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

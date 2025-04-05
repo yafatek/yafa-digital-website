@@ -7,10 +7,11 @@ import {
   ShoppingBag,
   Car,
   Plane,
-  ArrowRight
+  ArrowRight,
+  ChevronRight,
+  Check
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { AnimatedElement } from '@/components/ui/animated-element';
 
 // Industry data
 const industries = [
@@ -25,7 +26,8 @@ const industries = [
       'Virtual tour hosting solutions',
       'Automated reporting systems'
     ],
-    href: '/services#real-estate'
+    href: '/services#real-estate',
+    color: 'blue'
   },
   {
     id: 2,
@@ -38,7 +40,8 @@ const industries = [
       'PMS integration and hosting',
       'Automated guest communications'
     ],
-    href: '/services#hospitality'
+    href: '/services#hospitality',
+    color: 'violet'
   },
   {
     id: 3,
@@ -51,7 +54,8 @@ const industries = [
       'WhatsApp ordering bots',
       'Kitchen management systems'
     ],
-    href: '/services#food-beverage'
+    href: '/services#food-beverage',
+    color: 'amber'
   },
   {
     id: 4,
@@ -64,7 +68,8 @@ const industries = [
       'Order fulfillment automation',
       'Product recommendation engines'
     ],
-    href: '/services#e-commerce'
+    href: '/services#e-commerce',
+    color: 'emerald'
   }
 ];
 
@@ -86,106 +91,112 @@ const additionalIndustries = [
 
 const Industries = () => {
   return (
-    <section id="industries" className="section bg-white">
-      <div className="container">
-        <AnimatedElement animation="fade" className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium uppercase tracking-wider mb-4">
+    <section id="industries" className="py-24 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#f5f5f7]/80 to-transparent"></div>
+      
+      <div className="container relative">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="inline-block bg-amber-50 backdrop-blur-lg border border-amber-100 rounded-full px-4 py-1.5 text-amber-600 text-sm font-medium mb-6">
             Industry Solutions
           </div>
-          <h2 className="heading-lg mb-4">
-            Tailored Solutions for Your Industry
+          <h2 className="text-4xl md:text-5xl font-medium text-neutral-900 tracking-tight leading-tight mb-6">
+            Tailored for your industry
           </h2>
-          <p className="text-body-lg text-neutral-600 mx-auto">
-            We combine our deep technical expertise with industry-specific insights to deliver solutions that address the unique challenges and opportunities within your sector.
+          <p className="text-lg md:text-xl text-neutral-600 font-light">
+            We combine technical expertise with industry knowledge to deliver solutions crafted for your specific sector.
           </p>
-        </AnimatedElement>
-        
-        {/* Featured industries grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {industries.map((industry, index) => (
-            <AnimatedElement 
-              key={industry.id}
-              animation="slide"
-              delay={(index % 2 === 0) ? '100' : '200'}
-            >
-              <div className="card card-hover overflow-hidden border group h-full">
-                <div className="p-6 sm:p-8">
-                  <div className="flex items-start gap-5">
-                    <div className="feature-icon">
-                      {industry.icon && React.createElement(industry.icon, { className: "h-5 w-5" })}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="heading-md mb-3 text-neutral-900">{industry.title}</h3>
-                      <p className="text-neutral-700 mb-5">{industry.description}</p>
-                      
-                      <ul className="mb-6 space-y-2">
-                        {industry.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
-                            <span className="text-neutral-700 text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <div className="mt-auto pt-2">
-                        <Link href={industry.href}>
-                          <Button 
-                            variant="ghost" 
-                            className="text-primary hover:bg-primary/5 p-0 h-auto font-medium group"
-                          >
-                            Learn more
-                            <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedElement>
-          ))}
         </div>
         
-        {/* Additional industries */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {additionalIndustries.map((industry, index) => (
-            <AnimatedElement animation="fade" delay={(index % 2 === 0) ? '100' : '200'} key={index}>
-              <div className="flex items-start p-6 rounded-lg border border-neutral-200 bg-neutral-50/50 hover:shadow-sm transition-shadow">
-                <div className="feature-icon flex-shrink-0 mr-4">
-                  {industry.icon && React.createElement(industry.icon, { className: "h-5 w-5" })}
+        {/* Featured industries grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          {industries.map((industry, index) => (
+            <div 
+              key={industry.id}
+              className="bg-white rounded-2xl shadow-sm border border-neutral-200/80 overflow-hidden hover:shadow-md hover:border-neutral-300/80 transition-all duration-300 group h-full"
+            >
+              <div className="p-8 md:p-10">
+                <div className={`w-14 h-14 rounded-2xl bg-${industry.color}-50 flex items-center justify-center shadow-sm mb-6 text-${industry.color}-500`}>
+                  {industry.icon && React.createElement(industry.icon, { className: "h-7 w-7" })}
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">{industry.title}</h3>
-                  <p className="text-neutral-600 text-sm mb-4">{industry.description}</p>
+                
+                <h3 className="text-2xl font-medium text-neutral-900 mb-4">{industry.title}</h3>
+                <p className="text-neutral-600 mb-6">{industry.description}</p>
+                
+                <div className="space-y-3 mb-8">
+                  {industry.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start">
+                      <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-${industry.color}-50 flex items-center justify-center mt-0.5 mr-3`}>
+                        <Check className={`h-3 w-3 text-${industry.color}-500`} />
+                      </div>
+                      <span className="text-neutral-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-auto">
                   <Link href={industry.href}>
                     <Button 
                       variant="ghost" 
-                      size="sm"
-                      className="text-primary hover:bg-primary/5 p-0 h-auto text-sm font-medium group"
+                      className={`text-${industry.color}-500 hover:bg-${industry.color}-50 px-4 py-2 rounded-full border border-transparent hover:border-${industry.color}-200/50 group`}
                     >
                       Learn more
-                      <ArrowRight className="h-3 w-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-0.5 transition-transform" />
                     </Button>
                   </Link>
                 </div>
               </div>
-            </AnimatedElement>
+            </div>
+          ))}
+        </div>
+        
+        {/* Additional industries */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          {additionalIndustries.map((industry, index) => (
+            <div 
+              key={index}
+              className="bg-gradient-to-b from-neutral-50 to-white rounded-2xl border border-neutral-200/80 p-6 hover:shadow-md hover:border-neutral-300/80 transition-all duration-300 h-full flex items-start"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm mr-5 text-neutral-500 flex-shrink-0">
+                {industry.icon && React.createElement(industry.icon, { className: "h-6 w-6" })}
+              </div>
+              <div>
+                <h3 className="text-xl font-medium text-neutral-900 mb-3">{industry.title}</h3>
+                <p className="text-neutral-600 mb-4">{industry.description}</p>
+                <Link href={industry.href}>
+                  <Button 
+                    variant="ghost" 
+                    className="text-neutral-700 hover:bg-neutral-100 px-3 py-1.5 rounded-full text-sm"
+                  >
+                    Learn more
+                    <ChevronRight className="h-3.5 w-3.5 ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
         
         {/* CTA */}
-        <AnimatedElement animation="fade" className="max-w-3xl mx-auto text-center">
-          <h3 className="heading-md mb-4">Don't see your industry?</h3>
-          <p className="text-neutral-600 mb-6">
-            Our technology solutions can be adapted to virtually any business sector. Contact us to discuss your specific needs.
-          </p>
-          <Link href="/contact">
-            <Button size="lg" className="font-medium">
-              Contact Us
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </AnimatedElement>
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-gradient-to-b from-[#f5f5f7] to-white rounded-2xl border border-neutral-200/80 p-8 md:p-12 relative overflow-hidden shadow-sm">
+            <div className="absolute -left-16 -bottom-16 w-64 h-64 rounded-full bg-blue-50 blur-3xl opacity-30"></div>
+            <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-violet-50 blur-3xl opacity-30"></div>
+            
+            <div className="relative">
+              <h3 className="text-2xl md:text-3xl font-medium text-neutral-900 mb-4">Don't see your industry?</h3>
+              <p className="text-neutral-600 mb-8">
+                Our technology solutions can be adapted to virtually any business sector. Contact us to discuss your specific needs.
+              </p>
+              <Link href="/contact">
+                <Button className="bg-neutral-900 hover:bg-neutral-800 text-white rounded-full shadow-sm">
+                  Contact Us
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
