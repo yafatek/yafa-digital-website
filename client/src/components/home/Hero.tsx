@@ -172,8 +172,8 @@ const Hero = () => {
             <div className="flex items-center justify-center h-14">
               <img src={beanifyLogo} alt="Beanify" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
             </div>
-            <div className="flex items-center justify-center h-14 bg-blue-600 p-2 rounded-lg">
-              <img src={medseaLogo} alt="Med Sea 1888" className="h-full max-h-full w-auto object-contain opacity-100 hover:opacity-90 transition-opacity" />
+            <div className="flex items-center justify-center h-14">
+              <img src={medseaLogo} alt="Med Sea 1888" className="h-full max-h-full w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
             </div>
           </div>
           
