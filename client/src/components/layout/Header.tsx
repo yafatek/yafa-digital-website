@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'wouter';
+import { Link, useLocation, useRoute } from 'wouter';
 import { Menu, X, ChevronDown, Search, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import yafaLogoDark from '../../assets/yafa-logo-dark.png';
 import yafaLogoLight from '../../assets/yafa-logo-light.png';
+import { Input } from '@/components/ui/input';
 
 const navigation = [
   { name: 'Home', path: '/' },
@@ -23,12 +24,33 @@ const navigation = [
   { name: 'Blog', path: '/blog' }
 ];
 
+// Searchable content structure
+const searchableContent = [
+  { title: 'AWS Cloud Infrastructure', path: '/services#cloud', category: 'Service' },
+  { title: 'AI Solutions and Chatbots', path: '/ai-solutions', category: 'Service' },
+  { title: 'E-Commerce Solutions', path: '/services#ecommerce', category: 'Service' },
+  { title: 'Digital Marketing', path: '/services#marketing', category: 'Service' },
+  { title: 'Cybersecurity Services', path: '/services#security', category: 'Service' },
+  { title: 'Enterprise E-commerce Platform Migration', path: '/case-studies#retailplus', category: 'Case Study' },
+  { title: 'Multilingual AI Chatbot Implementation', path: '/case-studies#servicenow', category: 'Case Study' },
+  { title: 'Enterprise-Grade Security Infrastructure', path: '/case-studies#finsecure', category: 'Case Study' },
+  { title: 'About YAFA Cloud Services', path: '/about', category: 'Page' },
+  { title: 'Pricing Plans', path: '/pricing', category: 'Page' },
+  { title: 'Contact Us', path: '/contact', category: 'Page' },
+  { title: 'Blog & Insights', path: '/blog', category: 'Page' },
+];
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
-  const [location] = useLocation();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<typeof searchableContent>([]);
+  const [location, navigate] = useLocation();
   const dropdownRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchOverlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,16 +64,60 @@ const Header = () => {
           setActiveSubmenu(null);
         }
       }
+
+      // Close search when clicking outside
+      if (isSearchOpen && searchOverlayRef.current && !searchOverlayRef.current.contains(event.target as Node)) {
+        setIsSearchOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Close search on Escape key
+      if (e.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false);
+      }
+      
+      // Open search on Cmd+K or Ctrl+K
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(prev => !prev);
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [activeSubmenu]);
+  }, [activeSubmenu, isSearchOpen]);
+
+  // Focus the search input when the search overlay opens
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 100);
+    }
+  }, [isSearchOpen]);
+
+  // Filter search results based on query
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const results = searchableContent.filter(item => 
+      item.title.toLowerCase().includes(query) || 
+      item.category.toLowerCase().includes(query)
+    );
+    setSearchResults(results);
+  }, [searchQuery]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -63,6 +129,17 @@ const Header = () => {
     } else {
       setActiveSubmenu(name);
     }
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+    setSearchQuery('');
+  };
+
+  const handleSearchItemClick = (path: string) => {
+    setIsSearchOpen(false);
+    setSearchQuery('');
+    navigate(path);
   };
 
   const isActive = (path: string) => {
@@ -167,6 +244,7 @@ const Header = () => {
                 variant="ghost" 
                 size="sm" 
                 className="text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 rounded-full h-9 w-9 p-0"
+                onClick={toggleSearch}
               >
                 <Search className="h-4 w-4" />
                 <span className="sr-only">Search</span>
@@ -283,6 +361,68 @@ const Header = () => {
           </div>
         </div>
       </header>
+      
+      {/* Search Overlay */}
+      <div 
+        className={`fixed inset-0 z-50 bg-neutral-900/30 backdrop-blur-sm transition-opacity duration-200 ${
+          isSearchOpen 
+            ? 'opacity-100 pointer-events-auto' 
+            : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="w-full h-full flex items-start justify-center pt-24">
+          <div 
+            ref={searchOverlayRef}
+            className="bg-white w-full max-w-2xl rounded-xl shadow-2xl border border-neutral-200/50 transition-all duration-300 transform overflow-hidden"
+            style={{
+              maxHeight: isSearchOpen ? (searchResults.length > 0 ? '32rem' : '5rem') : '0',
+              opacity: isSearchOpen ? 1 : 0,
+            }}
+          >
+            <div className="p-4 border-b border-neutral-100 flex items-center">
+              <Search className="h-5 w-5 text-neutral-400 mr-3" />
+              <Input
+                ref={searchInputRef}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for services, case studies, pages..."
+                className="border-0 shadow-none focus-visible:ring-0 focus-visible:ring-transparent text-base text-neutral-700 placeholder:text-neutral-400"
+              />
+              <kbd className="hidden md:inline-flex h-5 select-none items-center gap-1 rounded border border-neutral-200 bg-neutral-50 px-1.5 font-mono text-[10px] font-medium text-neutral-500">
+                <span className="text-xs">⌘</span>K
+              </kbd>
+            </div>
+
+            {searchResults.length > 0 && (
+              <div className="overflow-y-auto max-h-80">
+                {searchResults.map((result, index) => (
+                  <div
+                    key={index}
+                    className="px-4 py-3 hover:bg-neutral-50 border-b border-neutral-100 last:border-b-0 cursor-pointer"
+                    onClick={() => handleSearchItemClick(result.path)}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h4 className="text-sm font-medium text-neutral-900">{result.title}</h4>
+                        <p className="text-xs text-neutral-500 mt-1">{result.path}</p>
+                      </div>
+                      <span className="text-xs px-2 py-1 rounded-full bg-neutral-100 text-neutral-600">
+                        {result.category}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {searchQuery && searchResults.length === 0 && (
+              <div className="p-6 text-center">
+                <p className="text-neutral-500">No results found for "{searchQuery}"</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
       
       {/* Spacer when mobile menu is open */}
       {isMobileMenuOpen && <div className="h-screen md:hidden" />}

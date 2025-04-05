@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ExternalLink, ChevronRight } from 'lucide-react';
+import { ArrowRight, ExternalLink, ChevronRight, ArrowUpRight } from 'lucide-react';
 
 // Import SVG images
 import ecommerceSvg from '../../assets/case-studies/ecommerce.svg';
@@ -67,70 +67,136 @@ const caseStudies = [
 const CaseStudies = () => {
   return (
     <section id="case-studies" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#f5f5f7]/80 via-white to-white"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#f5f5f7]/90 via-white to-white"></div>
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-50 blur-3xl opacity-30"></div>
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-violet-50 blur-3xl opacity-30"></div>
       
       <div className="container relative">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-blue-50 backdrop-blur-lg border border-blue-100 rounded-full px-4 py-1.5 text-blue-600 text-sm font-medium mb-6">
-            Success Stories
+        <div className="max-w-3xl mx-auto mb-24">
+          <div className="text-center mb-16 relative">
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <div className="inline-block bg-blue-50 backdrop-blur-lg border border-blue-100 rounded-full px-4 py-1.5 text-blue-600 text-sm font-medium">
+                  CLIENT SUCCESS
+                </div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-medium text-neutral-900 tracking-tight leading-tight">
+              Real results for<br />real businesses
+            </h2>
+            <div className="h-px w-24 bg-gradient-to-r from-blue-200 via-violet-300 to-blue-200 mx-auto my-8"></div>
+            <p className="text-lg md:text-xl text-neutral-600 font-light max-w-2xl mx-auto">
+              See how we've transformed Dubai businesses with innovative cloud and AI solutions that deliver measurable outcomes.
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-medium text-neutral-900 tracking-tight leading-tight mb-6">
-            Enterprise case studies
-          </h2>
-          <p className="text-lg md:text-xl text-neutral-600 font-light">
-            See how we've helped Dubai businesses achieve their goals through innovative cloud and AI solutions.
-          </p>
+          
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <span className="inline-flex items-center rounded-full border border-neutral-200 px-4 py-1.5 text-sm bg-white text-neutral-700">
+              <span className="block h-2 w-2 rounded-full bg-blue-500 mr-2"></span>
+              Cloud Solutions
+            </span>
+            <span className="inline-flex items-center rounded-full border border-neutral-200 px-4 py-1.5 text-sm bg-white text-neutral-700">
+              <span className="block h-2 w-2 rounded-full bg-violet-500 mr-2"></span>
+              AI & Automation
+            </span>
+            <span className="inline-flex items-center rounded-full border border-neutral-200 px-4 py-1.5 text-sm bg-white text-neutral-700">
+              <span className="block h-2 w-2 rounded-full bg-amber-500 mr-2"></span>
+              Cybersecurity
+            </span>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
             <div 
               key={study.id} 
-              className="bg-white rounded-2xl shadow-sm border border-neutral-200/80 overflow-hidden hover:shadow-md hover:border-neutral-300/80 transition-all duration-300 flex flex-col h-full group"
+              className="bg-white overflow-hidden flex flex-col h-full group relative"
             >
-              {/* Image with gradient background */}
-              <div className={`w-full h-48 ${study.bgColor} flex items-center justify-center p-6 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500`}>
-                {/* Decorative elements */}
-                <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-white/10 opacity-30"></div>
-                <div className="absolute -left-8 -bottom-8 w-32 h-32 rounded-full bg-white/10 opacity-20"></div>
-                
-                {study.category === 'E-Commerce' ? (
-                  <img 
-                    src={ecommerceSvg} 
-                    alt={`${study.title} illustration`}
-                    className={`w-32 h-32 object-contain ${study.iconColor}`}
-                  />
-                ) : study.category === 'AI Solutions' ? (
-                  <img 
-                    src={aiSvg} 
-                    alt={`${study.title} illustration`}
-                    className={`w-32 h-32 object-contain ${study.iconColor}`}
-                  />
-                ) : study.category === 'Cybersecurity' ? (
-                  <img 
-                    src={securitySvg} 
-                    alt={`${study.title} illustration`}
-                    className={`w-32 h-32 object-contain ${study.iconColor}`}
-                  />
-                ) : (
-                  <img 
-                    src={cloudSvg} 
-                    alt={`${study.title} illustration`}
-                    className={`w-32 h-32 object-contain ${study.iconColor}`}
-                  />
-                )}
+              <div className="absolute inset-0 border border-neutral-200/80 rounded-2xl transition-all duration-300 group-hover:border-neutral-300/90 group-hover:shadow-lg"></div>
+              
+              {/* Card Header */}
+              <div className="relative overflow-hidden p-5 flex items-start">
+                {/* Category */}
+                <div className={`${study.bgColor} ${study.textColor} text-xs font-medium px-3 py-1 rounded-full mb-5 inline-block`}>
+                  {study.category}
+                </div>
               </div>
               
-              <div className="p-6 md:p-8 flex flex-col flex-grow">
-                <div className="flex items-center mb-4">
-                  <span className={`${study.bgColor} ${study.textColor} text-xs font-medium px-3 py-1 rounded-full`}>
-                    {study.category}
-                  </span>
-                  <span className="ml-3 text-neutral-500 text-sm">Client: {study.client}</span>
+              {/* Card Content */}
+              <div className="px-5 pb-5 flex-grow flex flex-col">
+                <div className="mb-4 flex items-start justify-between">
+                  <h3 className="text-xl font-medium text-neutral-900 pr-3 leading-tight">{study.title}</h3>
+                  
+                  <div className={`flex-shrink-0 ${study.bgColor} rounded-full p-3 relative mt-0.5`}>
+                    {study.category === 'E-Commerce' ? (
+                      <img 
+                        src={ecommerceSvg} 
+                        alt={`${study.title} illustration`}
+                        className={`w-5 h-5 object-contain ${study.iconColor}`}
+                      />
+                    ) : study.category === 'AI Solutions' ? (
+                      <img 
+                        src={aiSvg} 
+                        alt={`${study.title} illustration`}
+                        className={`w-5 h-5 object-contain ${study.iconColor}`}
+                      />
+                    ) : study.category === 'Cybersecurity' ? (
+                      <img 
+                        src={securitySvg} 
+                        alt={`${study.title} illustration`}
+                        className={`w-5 h-5 object-contain ${study.iconColor}`}
+                      />
+                    ) : (
+                      <img 
+                        src={cloudSvg} 
+                        alt={`${study.title} illustration`}
+                        className={`w-5 h-5 object-contain ${study.iconColor}`}
+                      />
+                    )}
+                  </div>
                 </div>
                 
-                <h3 className="text-xl font-medium text-neutral-900 mb-3">{study.title}</h3>
-                <p className="text-neutral-600 mb-6">
+                <div className="mb-3 flex items-center">
+                  <div className="text-neutral-500 text-sm flex items-center">
+                    <span className={`mr-2 h-0.5 w-6 ${study.bgColor}`}></span>
+                    Client: <span className="text-neutral-800 ml-1">{study.client}</span>
+                  </div>
+                </div>
+                
+                {/* Results Section (highlighted) */}
+                <div className={`mb-6 ${study.bgColor} bg-opacity-20 rounded-xl p-4 relative`}>
+                  <div className="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-transparent via-blue-400 to-transparent opacity-30"></div>
+                  <div className="flex flex-col gap-y-2">
+                    {/* Extract and display key metrics from description */}
+                    {study.category === 'E-Commerce' && (
+                      <div className="flex items-baseline">
+                        <span className="text-2xl font-medium mr-2 text-blue-700">35%</span>
+                        <span className="text-neutral-700 text-sm">increase in sales</span>
+                      </div>
+                    )}
+                    {study.category === 'AI Solutions' && (
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-baseline">
+                          <span className="text-2xl font-medium mr-2 text-violet-700">40%</span>
+                          <span className="text-neutral-700 text-sm">lower service costs</span>
+                        </div>
+                        <div className="flex items-baseline">
+                          <span className="text-2xl font-medium mr-2 text-violet-700">75%</span>
+                          <span className="text-neutral-700 text-sm">faster response</span>
+                        </div>
+                      </div>
+                    )}
+                    {study.category === 'Cybersecurity' && (
+                      <div className="flex items-baseline">
+                        <span className="text-2xl font-medium mr-2 text-amber-700">100%</span>
+                        <span className="text-neutral-700 text-sm">compliance achieved</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                <p className="text-neutral-600 text-sm mb-6">
                   {study.description}
                 </p>
                 
@@ -138,10 +204,10 @@ const CaseStudies = () => {
                   <Link href={study.href} onClick={(e) => handleCaseStudyClick(e, study.href)}>
                     <Button 
                       variant="ghost" 
-                      className={`${study.textColor} hover:bg-${study.bgColor.slice(3)} px-4 py-2 rounded-full border border-transparent hover:border-${study.textColor.slice(5)}/50 group`}
+                      className={`${study.textColor} hover:bg-${study.bgColor.slice(3)} px-4 py-2 rounded-full border border-transparent hover:border-${study.textColor.slice(5)}/50 group text-sm w-full justify-center`}
                     >
-                      Read case study
-                      <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                      Read full case study
+                      <ArrowUpRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </Button>
                   </Link>
                 </div>
@@ -150,11 +216,11 @@ const CaseStudies = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Link href="/case-studies" onClick={handleViewAllClick}>
-            <Button className="bg-neutral-900 hover:bg-neutral-800 text-white rounded-full shadow-sm px-6">
-              View All Case Studies
-              <ChevronRight className="ml-1 h-4 w-4" />
+            <Button className="bg-neutral-900 hover:bg-neutral-800 text-white rounded-full shadow-sm font-normal">
+              View all case studies
+              <ArrowUpRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
