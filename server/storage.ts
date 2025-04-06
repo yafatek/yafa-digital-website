@@ -1,18 +1,11 @@
 import { type ContactFormValues } from "../client/src/lib/types";
-import { db } from "./db";
 import { 
-  users, 
-  contactSubmissions, 
-  newsletterSubscriptions, 
   type User,
   type InsertUser,
   type ContactSubmission,
   type NewsletterSubscription,
-  insertUserSchema,
-  insertContactSubmissionSchema,
-  insertNewsletterSubscriptionSchema
 } from "../shared/schema";
-import { eq } from "drizzle-orm";
+import { firestoreStorage } from './firestore-storage';
 
 // Keep the same interface
 export interface IStorage {
@@ -25,68 +18,36 @@ export interface IStorage {
   getNewsletterSubscriptions(): Promise<NewsletterSubscription[]>;
 }
 
-// Database storage implementation
-export class DatabaseStorage implements IStorage {
+// Firestore Storage Adapter
+export class FirestoreStorageAdapter implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user;
+    return firestoreStorage.getUser(id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user;
+    return firestoreStorage.getUserByUsername(username);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const validatedData = insertUserSchema.parse(insertUser);
-    const [user] = await db.insert(users).values(validatedData).returning();
-    return user;
+    return firestoreStorage.createUser(insertUser);
   }
 
   async createContactSubmission(contact: ContactFormValues): Promise<ContactSubmission> {
-    const contactData = {
-      name: contact.name,
-      email: contact.email,
-      subject: contact.subject,
-      service: contact.service,
-      message: contact.message
-    };
-    
-    const validatedData = insertContactSubmissionSchema.parse(contactData);
-    const [submission] = await db.insert(contactSubmissions)
-      .values(validatedData)
-      .returning();
-    
-    return submission;
+    return firestoreStorage.createContactSubmission(contact);
   }
 
   async getContactSubmissions(): Promise<ContactSubmission[]> {
-    return await db.select().from(contactSubmissions).orderBy(contactSubmissions.createdAt);
+    return firestoreStorage.getContactSubmissions();
   }
 
   async createNewsletterSubscription(email: string): Promise<NewsletterSubscription> {
-    const validatedData = insertNewsletterSubscriptionSchema.parse({ email });
-    
-    // Check if email already exists
-    const [existingSubscription] = await db.select()
-      .from(newsletterSubscriptions)
-      .where(eq(newsletterSubscriptions.email, email));
-    
-    if (existingSubscription) {
-      return existingSubscription;
-    }
-    
-    const [subscription] = await db.insert(newsletterSubscriptions)
-      .values(validatedData)
-      .returning();
-    
-    return subscription;
+    return firestoreStorage.createNewsletterSubscription(email);
   }
 
   async getNewsletterSubscriptions(): Promise<NewsletterSubscription[]> {
-    return await db.select().from(newsletterSubscriptions).orderBy(newsletterSubscriptions.createdAt);
+    return firestoreStorage.getNewsletterSubscriptions();
   }
 }
 
-// Export the database storage instance 
-export const storage = new DatabaseStorage();
+// Export the firestore storage instance 
+export const storage = new FirestoreStorageAdapter();

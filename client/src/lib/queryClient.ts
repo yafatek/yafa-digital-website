@@ -26,6 +26,25 @@ export async function apiRequest<T = any>(
     credentials: "include",
   });
 
+  // For JSON responses, even errors will return JSON that we should parse
+  // This allows us to get detailed error messages from the API
+  if (res.headers.get('content-type')?.includes('application/json')) {
+    const jsonResponse = await res.json();
+    
+    // If response isn't successful, enhance the error with status code
+    if (!res.ok) {
+      // Add status code to the response for better error handling
+      return { 
+        ...jsonResponse, 
+        success: false, 
+        status: res.status 
+      } as T;
+    }
+    
+    return jsonResponse as T;
+  }
+  
+  // For non-JSON responses, use the original error handling
   await throwIfResNotOk(res);
   return await res.json() as T;
 }

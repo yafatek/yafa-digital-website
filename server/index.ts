@@ -8,6 +8,7 @@ console.log('Environment:', {
   NODE_ENV: process.env.NODE_ENV,
   DATABASE_URL: process.env.DATABASE_URL ? 'Set' : 'Not set',
   GEMINI_API_KEY: process.env.GEMINI_API_KEY ? 'Set' : 'Not set',
+  PORT: process.env.PORT || 8080,
 });
 
 const app = express();
@@ -45,34 +46,39 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  const server = await registerRoutes(app);
+  try {
+    const server = await registerRoutes(app);
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+      const status = err.status || err.statusCode || 500;
+      const message = err.message || "Internal Server Error";
 
-    res.status(status).json({ message });
-    throw err;
-  });
+      res.status(status).json({ message });
+      console.error('Server error:', err);
+    });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
+    // importantly only setup vite in development and after
+    // setting up all the other routes so the catch-all route
+    // doesn't interfere with the other routes
+    if (app.get("env") === "development") {
+      await setupVite(app, server);
+    } else {
+      serveStatic(app);
+    }
+
+    // CRITICAL: Use PORT 8080 for Cloud Run compatibility
+    const port = process.env.PORT || 8080;
+    console.log(`Starting server on port ${port}`);
+    
+    server.listen({
+      port: Number(port),
+      host: "0.0.0.0",
+      reusePort: true,
+    }, () => {
+      log(`Server is running on port ${port}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
   }
-
-  // ALWAYS serve the app on port 5001
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5001;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
 })();

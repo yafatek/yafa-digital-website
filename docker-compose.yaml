@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "5001:8080"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=mysql://yafa_user:password@db:3306/yafa_cloud_db
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=yafa_cloud_db
+      - MYSQL_USER=yafa_user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data: 

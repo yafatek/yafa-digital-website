@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: yafa-cloud-platform
+    env: node
+    buildCommand: yarn install && yarn build
+    startCommand: node dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: PORT
+        value: 10000
+    autoDeploy: true 
