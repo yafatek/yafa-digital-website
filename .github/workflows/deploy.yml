@@ -1,0 +1,86 @@
+name: Deploy to VM
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        
+      - name: Build application
+        run: yarn build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Add host key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VM_HOST_KEY }}" >> ~/.ssh/known_hosts
+          
+      - name: Deploy to VM
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+          VM_USER: ${{ secrets.VM_USER }}
+          VM_DEPLOY_PATH: ${{ secrets.VM_DEPLOY_PATH }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NODE_ENV: production
+        run: |
+          # Package the dist directory and node_modules
+          tar -czf deploy.tar.gz dist package.json yarn.lock
+          
+          # Copy the package to the VM
+          scp deploy.tar.gz $VM_USER@$VM_HOST:$VM_DEPLOY_PATH
+          
+          # Execute deployment commands on the VM
+          ssh $VM_USER@$VM_HOST << EOF
+            cd $VM_DEPLOY_PATH
+            
+            # Backup current version (if it exists)
+            if [ -d "dist" ]; then
+              mv dist dist_backup_$(date +%Y%m%d%H%M%S)
+            fi
+            
+            # Extract the new version
+            tar -xzf deploy.tar.gz
+            
+            # Install production dependencies
+            yarn install --production --frozen-lockfile
+            
+            # Create/update environment file
+            cat > .env << EOL
+            DATABASE_URL="${DATABASE_URL}"
+            GEMINI_API_KEY="${GEMINI_API_KEY}"
+            NODE_ENV="${NODE_ENV}"
+            EOL
+            
+            # Restart the application (assuming PM2 is used)
+            if pm2 list | grep -q "yafa-cloud"; then
+              pm2 restart yafa-cloud
+            else
+              pm2 start dist/index.js --name "yafa-cloud"
+            fi
+            
+            # Clean up
+            rm deploy.tar.gz
+          EOF 
